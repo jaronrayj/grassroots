@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS grassroots_db;
-CREATE DATABASE exampledb;
+CREATE DATABASE grassroots_db;
 
 -- DROP DATABASE IF EXISTS testdb;
 -- CREATE DATABASE testdb;
