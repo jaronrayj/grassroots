@@ -24,7 +24,10 @@ module.exports = function (sequelize, DataTypes) {
     },
     logged_in: {
       type: DataTypes.BOOLEAN,
-      defaultValue: '1'
+      defaultValue: 1,
+      isIn: [
+        ['true', 'false', 0, 1]
+      ]
     }
   });
   return User;
