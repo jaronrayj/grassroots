@@ -1,13 +1,8 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
     "password": "rootroot",
     "database": "exampledb",
-=======
-    "password": "sigmachi3275",
-    "database": "grassroots_db",
->>>>>>> 07f677c157fb09f92f41e1e6617d9a06ded2b438
     "host": "localhost",
     "dialect": "mysql"
   },
