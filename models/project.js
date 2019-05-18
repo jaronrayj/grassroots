@@ -37,7 +37,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         // eslint-disable-next-line camelcase
         number_of_people: {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
                 min: 1
