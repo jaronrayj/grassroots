@@ -11,10 +11,10 @@ module.exports = function(app) {
   // Create a new example
   app.post("/api/users", function(req, res) {
     db.User.create({
-      username: req.body.username,
+      user_name: req.body.username,
       password: req.body.password,
       email: req.body.email,
-      loggedin: true
+      logged_in: true
     }).then(function(data) {
       res.json(data);
     });
