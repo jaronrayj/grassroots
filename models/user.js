@@ -4,6 +4,7 @@ module.exports = function (sequelize, DataTypes) {
     user_name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       validate: {
         len: [6]
       }
@@ -22,15 +23,20 @@ module.exports = function (sequelize, DataTypes) {
         isEmail: true,
         len: [6]
       }
+    },
+    logged_in: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+      isIn: [["true", "false", 0, 1]]
     }
-    // ,
-    // logged_in: {
-    //   type: DataTypes.BOOLEAN,
-    //   defaultValue: 1,
-    //   isIn: [
-    //     ['true', 'false', 0, 1]
-    //   ]
-    // }
   });
+
+  User.associate = function (models) {
+    User.hasMany(models.Project, {
+      as: "user_id",
+      allowNull: true,
+      defaultValue: null
+    });
+  };
   return User;
 };
