@@ -1,26 +1,17 @@
-var db = require("../models");
+var path = require("path");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Load index page
-  app.get("/", function(req, res) {
-    db.User.findAll({}).then(function() {
-      res.render("index");
-    });
+  app.get("/", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/home.html"));
   });
-  
-  app.get("/login", function(req, res) {
-    db.User.findAll({}).then(function() {
-      res.render("login");
-    });
+
+  app.get("/login", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/login.html"));
   });
- 
-  app.get("/projects", function(req, res) {
-    db.User.findAll({}).then(function(username) {
-      res.render("project", {
-        msg: "Welcome!",
-        name: username
-      });
-    });
+
+  app.get("/projects", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/projects.html"));
   });
 
   // // Load example page and pass in an example by id
@@ -33,7 +24,7 @@ module.exports = function(app) {
   // });
 
   // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
-    res.render("404");
-  });
+  // app.get("*", function (req, res) {
+  //   res.render("404");
+  // });
 };
