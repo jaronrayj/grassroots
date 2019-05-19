@@ -1,7 +1,5 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable indent */
 module.exports = function (sequelize, DataTypes) {
-    var Project = sequelize.define("project", {
+    var Project = sequelize.define("Project", {
         title: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -35,7 +33,6 @@ module.exports = function (sequelize, DataTypes) {
                 isAfter: DataTypes.NOW
             }
         },
-        // eslint-disable-next-line camelcase
         number_of_people: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -43,11 +40,19 @@ module.exports = function (sequelize, DataTypes) {
                 min: 1
             }
         },
-        // eslint-disable-next-line camelcase
         category_type: {
             type: DataTypes.STRING,
             allowNull: false
         }
     });
+
+    Project.associate = function (models) {
+        Project.hasMany(models.User, {
+            as: "project_id",
+            constraints: false,
+            allowNull: true,
+            defaultValue: null
+        });
+    };
     return Project;
 };
