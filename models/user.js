@@ -1,5 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
-  var User = sequelize.define("user", {
+
+  var User = sequelize.define("User", {
     user_name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -21,14 +22,15 @@ module.exports = function (sequelize, DataTypes) {
         isEmail: true,
         len: [6]
       }
-    },
-    logged_in: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: 1,
-      isIn: [
-        ['true', 'false', 0, 1]
-      ]
     }
+    // ,
+    // logged_in: {
+    //   type: DataTypes.BOOLEAN,
+    //   defaultValue: 1,
+    //   isIn: [
+    //     ['true', 'false', 0, 1]
+    //   ]
+    // }
   });
   return User;
 };
