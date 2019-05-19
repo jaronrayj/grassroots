@@ -1,11 +1,13 @@
 $(document).ready(function () {
 
   // JQuery Field ID's
-
-  $(document).on("submit", ".create-user", initUser);
   $(document).on("submit", ".login", loginUser);
 
-  function initUser() {
+  $(document).on("submit", "#my_form", initUser);
+  
+
+  function initUser(e) {
+    e.preventDefault();
 
     let $pwd = $("#pwd").val().trim();
     let $pwd2 = $("#pwd2").val().trim();
@@ -22,11 +24,21 @@ $(document).ready(function () {
 
     let newUser = {
       user_name: $("#username").val().trim(),
-      password: $("#pwd").val().trim(),
+      password: $pwd,
       email: $("#email").val().trim()
     };
 
-    // JARONS POST CODE HERE
+    $.post("/api/users", newUser).then(
+    function(data){
+      console.log(data);
+      if (data){
+        window.location.replace("/projects");
+      } else {
+        alert("Sorry, username is taken, please try another")
+      }
+    });
+
+
   };
 
 });
