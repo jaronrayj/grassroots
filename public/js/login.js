@@ -2,10 +2,8 @@ $(document).ready(function () {
 
   // JQuery Field ID's
 
-  $(document).on("submit", ".create-user", initUser);
-  $(document).on("submit", ".login", loginUser);
-
-  function initUser() {
+  $(document).on("submit", ".create-user", function (e) {
+    e.preventDefault();
 
     let $pwd = $("#pwd").val().trim();
     let $pwd2 = $("#pwd2").val().trim();
@@ -13,20 +11,20 @@ $(document).ready(function () {
     if ($pwd !== $pwd2) {
       alert("Those passwords do not match");
     } else {
-      createUser();
+      let newUser = {
+        user_name: $("#username").val().trim(),
+        password: $("#pwd").val().trim(),
+        email: $("#email").val().trim()
+      };
+
+      console.log(newUser)
+
+      $.post("/api/users", newUser, function (data, status) {
+        alert("Data: " + data + "\nStatus: " + status);
+      });
     }
 
-  };
-
-  function createUser() {
-
-    let newUser = {
-      user_name: $("#username").val().trim(),
-      password: $("#pwd").val().trim(),
-      email: $("#email").val().trim()
-    };
-
-    // JARONS POST CODE HERE
-  };
+  });
+  // $(document).on("submit", ".login", loginUser);
 
 });
