@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "rootroot",
-    "database": "exampledb",
+    "database": "grassroots_db",
     "host": "localhost",
     "dialect": "mysql"
   },

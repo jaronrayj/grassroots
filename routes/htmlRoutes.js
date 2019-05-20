@@ -1,4 +1,10 @@
-var db = require("../models");
+const db = require("../models");
+
+const path = require("path");
+
+app.listen(PORT, function() {
+  console.log("App listening on PORT " + PORT);
+});
 
 // todo update html routes
 

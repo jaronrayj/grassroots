@@ -3,7 +3,7 @@ $(document).ready(function () {
   // JQuery Field ID's
   $(document).on("submit", ".login", loginUser);
 
-  $(document).on("submit", "#my_form", initUser);
+  $(document).on("submit", "#user-form", initUser);
   
 
   function initUser(e) {
@@ -24,7 +24,7 @@ $(document).ready(function () {
 
     let newUser = {
       user_name: $("#username").val().trim(),
-      password: $pwd,
+      password: $("#pwd").val().trim(),
       email: $("#email").val().trim()
     };
 
