@@ -1,6 +1,23 @@
 require("dotenv").config();
 var express = require("express");
 
+// FIREBASE AUTHENTICATION --------------------------------->
+var firebase = require("firebase/app");
+require("firebase/auth");
+
+var firebaseConfig = {
+  apiKey: "AIzaSyA3QqXtwRNUb8tal061GneEXmCg5ySkQgM",
+  authDomain: "grassroots-bbacc.firebaseapp.com",
+  databaseURL: "https://grassroots-bbacc.firebaseio.com",
+  projectId: "grassroots-bbacc",
+  storageBucket: "grassroots-bbacc.appspot.com",
+  messagingSenderId: "174098270905",
+  appId: "1:174098270905:web:47388a2a647a4f3e"
+};
+
+firebase.initializeApp(firebaseConfig);
+// END FIREBASE ------------------------------------------->
+
 var app = express();
 var PORT = process.env.PORT || 8080;
 
