@@ -11,12 +11,12 @@ module.exports = function (app) {
   });
 
   app.get("/projects", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/projects.html"));
+    res.sendFile(path.join(__dirname, "../public/project.html"));
   });
 
   // // Load example page and pass in an example by id
-  // app.get("/projects/:id", function(req, res) {
-  //   db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+  // app.get("/projects/:id", functioneq, res) {
+  //   db.Example.findOne({ where: { id: req.params.id } }).then(functionbExample) {
   //     res.render("example", {
   //       example: dbExample
   //     });

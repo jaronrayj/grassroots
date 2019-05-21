@@ -1,3 +1,9 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+#username-validate, 
+#password-validate,
+#password2-validate {
+  color: red;
+}
