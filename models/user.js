@@ -29,16 +29,6 @@ module.exports = function (sequelize, DataTypes) {
       defaultValue: true,
       isIn: [["true", "false", 0, 1]]
     }
-  // },
-  // {
-  //   indexes: [
-  //     // Create a unique index on user_name
-  //     {
-  //       unique: true,
-  //       fields: ['user_name']
-  //     }
-  //   ],
-  //   sequelize
   });
 
   User.associate = function (models) {

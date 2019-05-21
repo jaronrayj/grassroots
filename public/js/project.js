@@ -13,7 +13,22 @@ $(document).ready(function() {
       var numberOfPeople = $("#number-of-people").val().trim();
       var category = $("#category").val().trim();
 
-      
+      let newProject = {
+        title: title,
+        description: description,
+        location: location,
+        time: time,
+        date: date,
+        number_pf_people: numberOfPeople,
+        category_type: category
+      }
+
+      $.post("/api/projects", newProject, function(data, status){
+        console.log(status);
+        if (status){
+          alert(`Project ${title} is created!`)
+        }
+      })
 
     });
   });
