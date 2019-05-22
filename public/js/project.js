@@ -5,17 +5,11 @@ $(document).ready(function () {
     e.preventDefault();
 
     var title = $("#title").val().trim();
-    console.log("TCL: title", title);
     var description = $("#description").val().trim();
-    console.log("TCL: description", description);
     var location = $("#location").val().trim();
-    console.log("TCL: location", location);
     var date = $("#date").val();
-    console.log("TCL: date", date);
     var numberOfPeople = $("#number-of-people").val().trim();
-    console.log("TCL: numberOfPeople", numberOfPeople);
     var category = $("#category").val();
-    console.log("TCL: category", category);
 
     let newProject = {
       title: title,
