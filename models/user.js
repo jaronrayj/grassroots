@@ -9,35 +9,33 @@ module.exports = function (sequelize, DataTypes) {
         msg: "User name already in use"
       },
       validate: {
-        len: [6]
+        len: [6],
+        not: [" "],
+        notEmpty: true
       }
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [6]
+        len: [6],
+        not: [" "],
+        notEmpty: true
       }
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
+        len: [6],
         isEmail: true,
-        len: [6]
+        notEmpty: true
       }
-    },
-    logged_in: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true,
-      isIn: [["true", "false", 0, 1]]
     }
   });
+
   User.associate = (models) => {
-    User.belongsToMany(models.Project, {
-      through: "ProjectUser",
-      foreignKey: "ProjectId"
-    });
+    User.belongsToMany(models.Project, { through: "ProjectUser" });
   };
   return User;
 };
