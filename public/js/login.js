@@ -1,25 +1,37 @@
-$(document).ready(function () {
-
-  // JQuery Field ID's
-
-  $(document).on("submit", ".create-user", function (e) {
+$(document).ready(function() {
+  
+  $(document).on("submit", ".create-user", function(e) {
     e.preventDefault();
-
+    
     var username = $("#username")
       .val()
       .trim();
+
+    if (username.length < 6) {
+      $("#username-validate").text(
+        "Please have at least 6 characters in length"
+      );
+    }
+  
     var email = $("#email")
       .val()
       .trim();
     var pwd = $("#pwd")
       .val()
       .trim();
+    if (pwd.length < 6) {
+      $("#password-validate").text(
+        "Please have at least 6 characters in length"
+      );
+    }
     var pwdCheck = $("#pwd2")
       .val()
       .trim();
 
     if (pwd !== pwdCheck) {
-      alert("Those passwords do not match");
+      $("#password2-validate").text(
+        `These passwords do not match`
+      );
     } else {
       var newUser = {
         user_name: username,
@@ -29,12 +41,16 @@ $(document).ready(function () {
 
       console.log(newUser);
 
-      $.post("/api/users", newUser, function (data, status) {
-        alert("Data: " + data + "\nStatus: " + status);
+      
+
+      $.post("/api/users", newUser, function(data, status) {
+        // alert("Data: " + data + "\nStatus: " + status);
+        console.log(status);
+        location.replace("/projects");
       });
 
       // FIREBASE SIGN UP NEW USER
-      firebase.auth().createUserWithEmailAndPassword(email, pwd).catch(function (error) {
+      firebase.auth().createUserWithEmailAndPassword(email, pwd).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -46,7 +62,7 @@ $(document).ready(function () {
   // $(document).on("submit", ".login", loginUser);
 
   // FIREBASE LOGIN EXISTING USER
-  firebase.auth().signInWithEmailAndPassword(email, pwd).catch(function (error) {
+  firebase.auth().signInWithEmailAndPassword(email, pwd).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -54,7 +70,7 @@ $(document).ready(function () {
   });
 
   // AUTHENTICATION STATE OBSERVER
-  firebase.auth().onAuthStateChanged(function (user) {
+  firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
       // var displayName = user.displayName;
@@ -72,12 +88,12 @@ $(document).ready(function () {
   });
 
   // FIREBASE LOGOUT STATE CHANGE
-  $("#logout").on("click", function (e) {
+  $("#logout").on("click", function(e) {
     e.stopPropagation();
 
-    auth.signOut().then(function () {
+    auth.signOut().then(function() {
       console.log("logged out");
-    }).catch(function (error) {
+    }).catch(function(error) {
       console.log(error);
     });
   });
