@@ -4,7 +4,10 @@ module.exports = function (sequelize, DataTypes) {
     user_name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: {
+        args: true,
+        msg: "User name already in use"
+      },
       validate: {
         len: [6]
       }
@@ -30,12 +33,10 @@ module.exports = function (sequelize, DataTypes) {
       isIn: [["true", "false", 0, 1]]
     }
   });
-
-  User.associate = function (models) {
-    User.hasMany(models.Project, {
-      as: "user_id",
-      allowNull: true,
-      defaultValue: null
+  User.associate = (models) => {
+    User.belongsToMany(models.Project, {
+      through: "ProjectUser",
+      foreignKey: "ProjectId"
     });
   };
   return User;

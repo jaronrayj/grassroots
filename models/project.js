@@ -46,13 +46,10 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         }
     });
-
-    Project.associate = function (models) {
-        Project.hasMany(models.User, {
-            as: "project_id",
-            constraints: false,
-            allowNull: true,
-            defaultValue: null
+    Project.associate = (models) => {
+        Project.belongsToMany(models.User, {
+            through: "ProjectUser",
+            foreignKey: "UserId"
         });
     };
     return Project;
