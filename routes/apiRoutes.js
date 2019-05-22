@@ -20,6 +20,22 @@ module.exports = function(app) {
       });
   });
 
+  // Delete a user
+  app.delete("/api/users/:id", function(req, res) {
+    db.User.destroy({
+        where: {
+          id: req.params.id
+        }
+      })
+      .then(function(data) {
+        res.json(data);
+      })
+      .catch(function(err) {
+        if (err) throw err;
+      });
+  });
+
+  // PROJECTS //
   // Get all projects
   app.get("/api/projects", function(req, res) {
     db.Project.findAll().then(function(data) {
@@ -27,7 +43,7 @@ module.exports = function(app) {
     });
   });
 
-  // Create a new user
+  // Create a new project
   app.post("/api/projects", function(req, res) {
     db.Project.create(req.body)
       .then(function(data) {
@@ -38,28 +54,28 @@ module.exports = function(app) {
       });
   });
 
-  // //Get a specific user by id, joined with their projects
-  // app.get("/api/users/:id", function(req, res) {
-  //   db.User.find({
-  //     include: [db.Project],
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(function(data) {
-  //     res.json(data);
-  //   });
-  // });
-
-  //PROJECTS//
-  //Get all projects
-  app.get("/api/projects", function(req, res) {
-    db.Project.findAll().then(function(data) {
-      res.json(data);
-    });
+  // Get single project info
+  app.get("/api/projects/:id", function(req, res) {
+    db.Project.findOne({
+        where: {
+          id: req.params.id
+        }
+      })
+      .then(function(data) {
+        res.json(data);
+      })
+      .catch(function(err) {
+        if (err) throw err;
+      })
   });
-  //Create a new project
-  app.post("/api/projects", function(req, res) {
-    db.Project.create(req.body)
+
+  // Delete a specific project
+  app.delete("/api/projects/:id", function(req, res) {
+    db.Project.destroy({
+        where: {
+          id: req.params.id
+        }
+      })
       .then(function(data) {
         res.json(data);
       })
@@ -68,10 +84,4 @@ module.exports = function(app) {
       });
   });
 
-  //   // Delete an example by id
-  //   app.delete("/api/users/:id", functionreq, res) {
-  //     db.Example.destroy({ where: { id: req.params.id } }).then(functiondata) {
-  //       res.json(data);
-  //     });
-  //   });
 };

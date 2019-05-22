@@ -33,6 +33,8 @@ $(document).ready(function() {
     });
   });
 
+  
+
   // AUTHENTICATION STATE OBSERVER
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
