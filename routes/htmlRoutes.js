@@ -14,6 +14,16 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../public/project.html"));
   });
 
+  app.get("/my/projects", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/my_projects.html"));
+  });
+
+  app.get("/copy/project", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/project.html"));
+  });
+
+
+
   // // Load example page and pass in an example by id
   // app.get("/projects/:id", functioneq, res) {
   //   db.Example.findOne({ where: { id: req.params.id } }).then(functionbExample) {
