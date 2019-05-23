@@ -1,49 +1,38 @@
-$(document).ready(function () {
-  $(document).on("submit", ".create-user", function (e) {
-    e.preventDefault();
+$(document).ready(function() {
+  // Getting references to our form and inputs
+  var loginForm = $("form.login");
+  var emailInput = $("input#email-input");
+  var passwordInput = $("input#password-input");
 
-    var username = $("#username")
-      .val()
-      .trim();
+  // When the form is submitted, we validate there's an email and password entered
+  loginForm.on("submit", function(event) {
+    event.preventDefault();
+    var userData = {
+      email: emailInput.val().trim(),
+      password: passwordInput.val().trim()
+    };
 
-    if (username.length < 6) {
-      $("#username-validate").text(
-        "Please have at least 6 characters in length"
-      );
+    if (!userData.email || !userData.password) {
+      return;
     }
 
-    var email = $("#email")
-      .val()
-      .trim();
-    var pwd = $("#pwd")
-      .val()
-      .trim();
-    if (pwd.length < 6) {
-      $("#password-validate").text(
-        "Please have at least 6 characters in length"
-      );
-    }
-    var pwdCheck = $("#pwd2")
-      .val()
-      .trim();
-
-    if (pwd !== pwdCheck) {
-      $("#password2-validate").text("These passwords do not match.");
-    } else {
-      var newUser = {
-        user_name: username,
-        password: pwd,
-        email: email
-      };
-
-      console.log(newUser);
-
-      $.post("/api/users", newUser, function (data, status) {
-        // alert("Data: " + data + "\nStatus: " + status);
-        console.log(status);
-        location.replace("/projects");
-      });
-    }
+    // If we have an email and password we run the loginUser function and clear the form
+    loginUser(userData.email, userData.password);
+    emailInput.val("");
+    passwordInput.val("");
   });
-  // $(document).on("submit", ".login", loginUser);
+
+  // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
+  function loginUser(email, password) {
+    $.post("/api/login", {
+      email: email,
+      password: password
+    }).then(function(data) {
+      window.location.replace(data);
+      // If there's an error, log the error
+    }).catch(function(err) {
+      console.log(err);
+    });
+  }
+
 });

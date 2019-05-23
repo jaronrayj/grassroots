@@ -3,19 +3,19 @@ var bcrypt = require("bcryptjs");
 module.exports = function (sequelize, DataTypes) {
 
   var User = sequelize.define("User", {
-    user_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: {
-        args: true,
-        msg: "User name already in use"
-      },
-      validate: {
-        len: [6],
-        not: [" "],
-        notEmpty: true
-      }
-    },
+    // user_name: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   unique: {
+    //     args: true,
+    //     msg: "User name already in use"
+    //   },
+    //   validate: {
+    //     len: [6],
+    //     not: [" "],
+    //     notEmpty: true
+    //   }
+    // },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -36,9 +36,9 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  User.associate = (models) => {
-    User.belongsToMany(models.Project, { through: "ProjectUser" });
-  };
+  // User.associate = (models) => {
+  //   User.belongsToMany(models.Project, { through: "ProjectUser" });
+  // };
 
   // Creating a custom method for our User model. 
   // This will check if an unhashed password entered by the 

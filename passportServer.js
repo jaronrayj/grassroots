@@ -20,12 +20,21 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 //
-require("./passportRoutes/api-routes.js")(app);
-require("./passportRoutes/api-routes.js")(app);
+require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app);
 //
+var syncOptions = {
+  force: false
+};
+
+// If running a test, set syncOptions.force to true
+// clearing the `testdb`
+if (process.env.NODE_ENV === "test") {
+  syncOptions.force = true;
+}
 //this will listen to and show all activities on our terminal to
 //let us know what is happening in our app
-db.sequelize.sync().then(function () {
+db.sequelize.sync(syncOptions).then(function () {
   app.listen(PORT, function () {
     console.log(
       "==> 🌎 Listening on port %s. Visit http://localhost:%s/ in your browser.",
