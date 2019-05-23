@@ -1,8 +1,6 @@
-
 var db = require("../models");
 
 module.exports = function (app) {
-    // PROJECTS //
     // Get all projects with their users
     app.get("/api/projects", function (req, res) {
         db.Project.findAll({
