@@ -5,55 +5,64 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1]
+                len: [1],
+                notEmpty: true
             }
         },
         description: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1]
+                len: [1],
+                notEmpty: true
             }
         },
         location: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1]
+                len: [1],
+                notEmpty: true
             }
         },
         time: {
             type: DataTypes.TIME,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                len: [1],
+                notEmpty: true
+            }
         },
         date: {
             type: DataTypes.DATEONLY,
             allowNull: false,
             validate: {
                 isDate: true,
-                isAfter: DataTypes.NOW
+                isAfter: DataTypes.NOW,
+                notEmpty: true
             }
         },
         number_of_people: {
             type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
-                min: 1
+                min: 1,
+                notEmpty: true,
+                isInt: true
             }
         },
         category_type: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                notEmpty: true,
+                len: [1]
+            }
         }
     });
 
-    Project.associate = function (models) {
-        Project.hasMany(models.User, {
-            as: "project_id",
-            constraints: false,
-            allowNull: true,
-            defaultValue: null
-        });
+    Project.associate = (models) => {
+        Project.belongsToMany(models.User, { through: "ProjectUser" });
     };
     return Project;
 };
