@@ -10,9 +10,23 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
-  app.get("/projects", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/project.html"));
+  app.get("/new/projects", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/new_project.html"));
   });
+
+  app.get("/my/projects", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/my_projects.html"));
+  });
+
+  // app.get("/copy/projects", function (req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/project.html"));
+  // });
+  
+  app.get("/projects", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/project_home.html"));
+  });
+
+
 
   // // Load example page and pass in an example by id
   // app.get("/projects/:id", functioneq, res) {
@@ -24,7 +38,7 @@ module.exports = function (app) {
   // });
 
   // Render 404 page for any unmatched routes
-  // app.get("*", function (req, res) {
-  //   res.render("404");
-  // });
+  app.get("*", function (req, res) {
+    res.render("404");
+  });
 };
