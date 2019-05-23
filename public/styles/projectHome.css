@@ -1,0 +1,148 @@
+/* BODY */
+body {
+    font-family: "Arial", sans-serif;
+}
+
+/* BACKGROUND IMAGE */
+.background-image {
+    background-image: url("../images/projectHome\ background.png");
+    height: 817px;
+    width: 100%;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* NAV BAR */
+.sidenav {
+    height: 100%;
+    width: 180px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #91AAE3;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+/* NAV BAR LOGO */
+.logo {
+    height: 140px;
+    width: 160px;
+    position: fixed;
+    padding-left: 20px;
+}
+
+/* NAV BAR BUTTONS */
+.newProjectBtn {
+    height: 50px;
+    width: 140px;
+    padding-left: 10px;
+    position: absolute;
+    top: 25%;
+    left: 8%;
+}
+
+.myProjectsBtn {
+    height: 50px;
+    width: 140px;
+    padding-left: 10px;
+    position: absolute;
+    top: 33%;
+    left: 8%;
+}
+
+/* SOCIAL MEDIA BUTTONS NAV */
+.instagramNav {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 97%;
+    left: 25%;
+}
+
+.twitterNav {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 97%;
+    left: 45%;
+}
+
+.facebookNav {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 97%;
+    left: 65%;
+}
+
+/* TOP PROJECTS TEXT */
+.title {
+    color: #5368B7;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+/* TOP PROJECTS DROP DOWN */
+.dropDown {
+    background-color: #91AAE3;
+    color: aliceblue;
+}
+
+/* CARDS */
+.viewBtn {
+    background-color: #5368B7;
+    outline-color: #324074;
+    color: white;
+}
+
+.cardBody {
+    background-color: #aec0ebd2;
+}
+
+/* FOOTER/BUTTONS */
+.footer1 {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    background-color: #91AAE3;
+}
+
+/* FOOTER SOCIAL MEDIA BUTTONS */
+.instagramFoot {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 40%;
+    left: 48%;
+}
+
+.twitterFoot {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+}
+
+.facebookFoot {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 40%;
+    left: 52%;
+}
+
+/* CODE FROM STICKY NAV? */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+}
