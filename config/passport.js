@@ -6,12 +6,12 @@ var db = require("../models");
 passport.use(
   new LocalStrategy(
     {
-      usernameField: "username"
+      usernameField: "email"
     },
-    function (username, password, done) {
+    function (email, password, done) {
       db.User.findOne({
         where: {
-          username: username
+          email: email
         }
       }).then(function (dbUser) {
         if (!dbUser) {
