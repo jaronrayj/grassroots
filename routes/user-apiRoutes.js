@@ -25,9 +25,8 @@ module.exports = function (app) {
         if (err) throw err;
       });
   });
-
-  //Get a specific user by username, joined with their projects
-  app.get("/api/users/:username", function (req, res) {
+  //Get a specific user by id, joined with their projects
+  app.get("/api/users/:id", function (req, res) {
     db.User.findOne({
       include: [{
         model: db.Project,
@@ -36,7 +35,7 @@ module.exports = function (app) {
         }
       }],
       where: {
-        user_name: req.params.username
+        user_name: req.params.id
       }
     }).then(function (data) {
       res.json(data);
