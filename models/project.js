@@ -58,7 +58,15 @@ module.exports = function (sequelize, DataTypes) {
                 notEmpty: true,
                 len: [1]
             }
-        }
+        },
+        // creatorId: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     validate: {
+        //         notEmpty: true,
+        //         isInt: true
+        //     }
+        // }
     });
 
     Project.associate = (models) => {
