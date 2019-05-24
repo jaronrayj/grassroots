@@ -9,32 +9,22 @@ chai.use(chaiHttp);
 
 var request;
 
-describe("GET /api/users", function() {
+describe("GET /api/users", function () {
   // Before each test begins, create a new request server for testing
   // & delete all examples from the db
-  beforeEach(function() {
+  beforeEach(function () {
     request = chai.request(server);
-    return db.sequelize.sync({
-      force: true
-    });
+    return db.sequelize.sync({ force: true });
   });
 
-  it("should find all examples", function(done) {
+  it("should find all examples", function (done) {
     // Add some examples to the db to test with
-    db.Example.bulkCreate([
-      {
-        username: "username",
-        password: "password",
-        email: "email@email.com"
-      },
-      {
-        username: "nameuser",
-        password: "wordpass",
-        email: "ema1l@email.com"
-      }
-    ]).then(function() {
+    db.User.bulkCreate([
+      { user_name: "username", password: "password", email: "email@gmail.com" },
+      { user_name: "nameuser", password: "wordpass", email: "email1@gmail.com" }
+    ]).then(function () {
       // Request the route that returns all examples
-      request.get("/api/users").end(function(err, res) {
+      request.get("/api/users").end(function (err, res) {
         var responseStatus = res.status;
         var responseBody = res.body;
 
@@ -51,17 +41,17 @@ describe("GET /api/users", function() {
         expect(responseBody[0])
           .to.be.an("object")
           .that.includes({
-            username: "username",
+            user_name: "username",
             password: "password",
-            email: "email@email.com"
+            email: "email@gmail.com"
           });
 
         expect(responseBody[1])
           .to.be.an("object")
           .that.includes({
-            username: "nameuser",
+            user_name: "nameuser",
             password: "wordpass",
-            email: "ema1l@email.com"
+            email: "email1@gmail.com"
           });
 
         // The `done` function is used to end any asynchronous tests

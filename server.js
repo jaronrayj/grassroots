@@ -17,7 +17,8 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Routes
-require("./routes/apiRoutes")(app);
+require("./routes/user-apiRoutes")(app);
+require("./routes/project-apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 var syncOptions = {
