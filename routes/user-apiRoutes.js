@@ -35,7 +35,7 @@ module.exports = function (app) {
         }
       }],
       where: {
-        user_name: req.params.id
+        id: req.params.id
       }
     }).then(function (data) {
       res.json(data);

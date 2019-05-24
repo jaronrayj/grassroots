@@ -26,7 +26,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         time: {
-            type: DataTypes.TIME,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1],
@@ -58,15 +58,7 @@ module.exports = function (sequelize, DataTypes) {
                 notEmpty: true,
                 len: [1]
             }
-        },
-        // creatorId: {
-        //     type: DataTypes.INTEGER,
-        //     allowNull: false,
-        //     validate: {
-        //         notEmpty: true,
-        //         isInt: true
-        //     }
-        // }
+        }
     });
 
     Project.associate = (models) => {
