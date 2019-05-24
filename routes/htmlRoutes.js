@@ -14,7 +14,7 @@ module.exports = function (app) {
 
   app.get("/login", function (req, res) {
     if (req.user) {
-      res.redirect("/members");
+      res.redirect("/project_home");
     }
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
@@ -31,7 +31,7 @@ module.exports = function (app) {
   //   res.sendFile(path.join(__dirname, "../public/project.html"));
   // });
 
-  app.get("/projects", isAuthenticated, function (req, res) {
+  app.get("/project_home", isAuthenticated, function (req, res) {
     res.sendFile(path.join(__dirname, "../public/project_home.html"));
   });
 
@@ -45,7 +45,7 @@ module.exports = function (app) {
   // });
 
   // Render 404 page for any unmatched routes
-  app.get("*", function (req, res) {
-    res.render("404");
-  });
+  // app.get("*", function (req, res) {
+  //   res.render("404");
+  // });
 };
