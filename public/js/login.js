@@ -1,5 +1,5 @@
-$(document).ready(function () {
-  $(document).on("submit", ".create-user", function (e) {
+$(document).ready(function() {
+  $(document).on("submit", ".create-user", function(e) {
     e.preventDefault();
 
     var username = $("#username")
@@ -38,8 +38,7 @@ $(document).ready(function () {
 
       console.log(newUser);
 
-      $.post("/api/users", newUser, function (data, status) {
-        // alert("Data: " + data + "\nStatus: " + status);
+      $.post("/api/users", newUser, function(data, status) {
         console.log(status);
         location.replace("/projects");
       });
