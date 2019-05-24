@@ -38,7 +38,7 @@ $(document).ready(function () {
 
       console.log(newUser);
 
-      $.post("/api/users", newUser, function (data, status) {
+      $.post("/api/signup", newUser, function (data, status) {
         // alert("Data: " + data + "\nStatus: " + status);
         console.log(status);
         location.replace("/projects");
