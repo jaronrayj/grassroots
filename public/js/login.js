@@ -30,12 +30,8 @@ $(document).ready(function () {
     if (password !== pwdCheck) {
       $("#password2-validate").text("These passwords do not match.");
     } else {
-      // var newUser = {
-      //   user_name: username,
-      //   password: pwd,
-      //   email: email
-      // };
 
+      // AUTHENTICATION WORKING //
       $.post("/api/signup", {
         user_name: user_name,
         password: password,
@@ -47,14 +43,6 @@ $(document).ready(function () {
         .catch(function (err) {
           console.log(err.resposeJSON);
         });
-
-      // console.log(newUser);
-
-      // $.post("/api/signup", newUser, function (data, status) {
-      //   // alert("Data: " + data + "\nStatus: " + status);
-      //   console.log(status);
-      //   location.replace("/projects");
-      // });
     }
   });
   // $(document).on("submit", ".login", loginUser);
