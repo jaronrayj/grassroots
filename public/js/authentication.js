@@ -12,12 +12,12 @@ firebase.initializeApp(firebaseConfig);
 var auth = firebase.auth();
 // auth.onAuthStateChanged(firebaseUser => {});
 
-$("#sign-up").on("click", function (e) {
+$("#sign-up").on("click", function(e) {
   e.preventDefault();
 
   auth
     .createUserWithEmailAndPassword(email, password)
-    .then(function (credentials) {
+    .then(function(credentials) {
       auth.currentUser.updateProfile({
         displayName: username
       });
@@ -26,7 +26,7 @@ $("#sign-up").on("click", function (e) {
     });
 });
 
-$("#login-btn").on("click", function (e) {
+$("#login-btn").on("click", function(e) {
   e.preventDefault();
   console.log("logged in");
 
@@ -41,30 +41,30 @@ $("#login-btn").on("click", function (e) {
   // user login
   auth
     .signInWithEmailAndPassword(email, password)
-    .then(function (credentials) {
+    .then(function(credentials) {
       console.log(credentials);
     })
-    .catch(function (error) {
+    .catch(function(error) {
       console.log(error);
     });
 
   $("#email, #pass").val("");
 });
 
-$("#logout").on("click", function (e) {
+$("#logout").on("click", function(e) {
   e.stopPropagation();
 
   auth
     .signOut()
-    .then(function () {
+    .then(function() {
       console.log("logged out");
     })
-    .catch(function (error) {
+    .catch(function(error) {
       console.log(error);
     });
 });
 
-firebase.auth().onAuthStateChanged(function (user) {
+firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
     var displayName = user.displayName;

@@ -30,7 +30,6 @@ $(document).ready(function () {
     if (password !== pwdCheck) {
       $("#password2-validate").text("These passwords do not match.");
     } else {
-
       // AUTHENTICATION WORKING //
       $.post("/api/signup", {
         user_name: user_name,

@@ -7,14 +7,14 @@ module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
     if (req.user) {
-      res.redirect("/project_home");
+      res.redirect("/projects");
     }
     res.sendFile(path.join(__dirname, "../public/home.html"));
   });
 
   app.get("/login", function (req, res) {
     if (req.user) {
-      res.redirect("/project_home");
+      res.redirect("/projects");
     }
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
@@ -27,17 +27,17 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../public/my_projects.html"));
   });
 
-  // app.get("/copy/projects", function (req, res) {
+  // app.get("/copy/projects", function(req, res) {
   //   res.sendFile(path.join(__dirname, "../public/project.html"));
   // });
 
-  app.get("/project_home", isAuthenticated, function (req, res) {
+  app.get("/projects", isAuthenticated, function (req, res) {
     res.sendFile(path.join(__dirname, "../public/project_home.html"));
   });
 
   // // Load example page and pass in an example by id
-  // app.get("/projects/:id", functioneq, res) {
-  //   db.Example.findOne({ where: { id: req.params.id } }).then(functionbExample) {
+  // app.get("/projects/:id", functionq, res) {
+  //   db.Example.findOne({ where: { id: req.params.id } }).then(functionExample) {
   //     res.render("example", {
   //       example: dbExample
   //     });
@@ -45,7 +45,7 @@ module.exports = function (app) {
   // });
 
   // Render 404 page for any unmatched routes
-  // app.get("*", function (req, res) {
-  //   res.render("404");
-  // });
+  app.get("*", function (req, res) {
+    res.render("404");
+  });
 };
