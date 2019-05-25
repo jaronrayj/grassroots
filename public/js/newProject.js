@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  $(document).on("submit", ".create-project", function(e) {
+$(document).ready(function () {
+  $(document).on("submit", ".create-project", function (e) {
     e.preventDefault();
 
     var title = $("#title")
@@ -36,14 +36,14 @@ $(document).ready(function() {
       type: "post",
       url: "/api/projects",
       data: newProject
-    }).then(function(data, status) {
+    }).then(function (data, status) {
       console.log(status);
       location.replace("/projects/my");
     });
   });
 });
 
-$(document).on("click", ".delete-project", function() {
+$(document).on("click", ".delete-project", function () {
   var id = $(this).data("id");
 
   var url = "/api/projects/" + id;
@@ -51,7 +51,7 @@ $(document).on("click", ".delete-project", function() {
   $.ajax({
     type: "delete",
     url: url
-  }).then(function(data) {
+  }).then(function (data) {
     alert("Project  " + data.name + " deleted");
     location.reload();
   });

@@ -69,8 +69,50 @@ $(document).ready(function () {
         $(".secondRow").empty();
         card(projectArray);
     });
-
     // todo click on "find out more" and pull up modal with more info and copy button along w/join. Set up data-id on buttons
 
+    //Project copy button
+    $(document).on("click", ".copy-project", function () {
+        let projectId = $(this).attr("project-id");
 
+        $.get("/api/projects/" + projectId, function (data) {
+
+            $("#title").val(data.title);
+            $("#description").val(data.description);
+            $("#number-of-people").val(data.number_of_people);
+            $(`select#category option:contains("${data.category_type}")`).prop("selected", true);
+            $("#copy-project-modal").modal();
+        });
+    });
+
+    //Project copy submit
+    $(document).on("submit", ".copy-project-form", function (e) {
+        e.preventDefault();
+
+        let title = $("#title").val().trim();
+        let description = $("#description").val().trim();
+        let location = $("#location").val().trim();
+        let datetime = $("#date").val().split("T");
+        let date = datetime[0];
+        let time = datetime[1];
+        let numberOfPeople = $("#number-of-people").val().trim();
+        let category = $("#category").val();
+
+        let newProject = {
+            title: title,
+            description: description,
+            location: location,
+            time: time,
+            date: date,
+            number_of_people: numberOfPeople,
+            category_type: category
+        };
+
+        $.post("/api/projects", newProject, function (data, status) {
+            if (status) {
+                alert(`Project ${title} is created!`);
+                window.location.replace("/my/projects");
+            };
+        });
+    });
 });
