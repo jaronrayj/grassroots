@@ -76,41 +76,41 @@ $(document).ready(function () {
 
         $.get("/api/projects/" + projectId, function (data) {
 
-            $("#title").attr("placeholder", data.title);
-            $("#description").attr("placeholder", data.description);
-            $("#number-of-people").attr("placeholder", data.number_of_people);
+            $("#title").val(data.title);
+            $("#description").val(data.description);
+            $("#number-of-people").val(data.number_of_people);
             $(`select#category option:contains("${data.category_type}")`).prop("selected", true);
             $("#copy-project-modal").modal();
+        });
+    });
 
-            $(document).on("submit", ".copy-project-form", function (e) {
-                e.preventDefault();
+    $(document).on("submit", ".copy-project-form", function (e) {
+        e.preventDefault();
 
-                let title = $("#title").val().trim();
-                let description = $("#description").val().trim();
-                let location = $("#location").val().trim();
-                let datetime = $("#date").val().split("T");
-                let date = datetime[0];
-                let time = datetime[1];
-                let numberOfPeople = $("#number-of-people").val().trim();
-                let category = $("#category").val();
+        let title = $("#title").val().trim();
+        let description = $("#description").val().trim();
+        let location = $("#location").val().trim();
+        let datetime = $("#date").val().split("T");
+        let date = datetime[0];
+        let time = datetime[1];
+        let numberOfPeople = $("#number-of-people").val().trim();
+        let category = $("#category").val();
 
-                let newProject = {
-                    title: title,
-                    description: description,
-                    location: location,
-                    time: time,
-                    date: date,
-                    number_of_people: numberOfPeople,
-                    category_type: category
-                };
+        let newProject = {
+            title: title,
+            description: description,
+            location: location,
+            time: time,
+            date: date,
+            number_of_people: numberOfPeople,
+            category_type: category
+        };
 
-                $.post("/api/projects", newProject, function (data, status) {
-                    if (status) {
-                        alert(`Project ${title} is created!`);
-                        window.location.replace("/projects/my");
-                    };
-                });
-            });
+        $.post("/api/projects", newProject, function (data, status) {
+            if (status) {
+                alert(`Project ${title} is created!`);
+                window.location.replace("/my/projects");
+            };
         });
     });
 });
