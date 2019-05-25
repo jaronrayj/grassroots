@@ -18,8 +18,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-require("./routes/user-apiRoutes")(app);
-require("./routes/project-apiRoutes")(app);
+require("./routes/apiRoutes")(app);
+// require("./routes/project-apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 // Do/Don't delete the data in DB
