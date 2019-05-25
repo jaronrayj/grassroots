@@ -1,12 +1,12 @@
-$(document).ready(function() {
-  $(document).on("submit", ".create-user", function(e) {
+$(document).ready(function () {
+  $(document).on("submit", ".create-user", function (e) {
     e.preventDefault();
 
-    var username = $("#username")
+    var user_name = $("#username")
       .val()
       .trim();
 
-    if (username.length < 6) {
+    if (user_name.length < 6) {
       $("#username-validate").text(
         "Please have at least 6 characters in length"
       );
@@ -15,10 +15,10 @@ $(document).ready(function() {
     var email = $("#email")
       .val()
       .trim();
-    var pwd = $("#pwd")
+    var password = $("#pwd")
       .val()
       .trim();
-    if (pwd.length < 6) {
+    if (password.length < 6) {
       $("#password-validate").text(
         "Please have at least 6 characters in length"
       );
@@ -27,21 +27,21 @@ $(document).ready(function() {
       .val()
       .trim();
 
-    if (pwd !== pwdCheck) {
+    if (password !== pwdCheck) {
       $("#password2-validate").text("These passwords do not match.");
     } else {
-      var newUser = {
-        user_name: username,
-        password: pwd,
+      // AUTHENTICATION WORKING //
+      $.post("/api/signup", {
+        user_name: user_name,
+        password: password,
         email: email
-      };
-
-      console.log(newUser);
-
-      $.post("/api/users", newUser, function(data, status) {
-        console.log(status);
-        location.replace("/projects");
-      });
+      })
+        .then(function (data) {
+          window.location.replace(data);
+        })
+        .catch(function (err) {
+          console.log(err.resposeJSON);
+        });
     }
   });
   // $(document).on("submit", ".login", loginUser);
