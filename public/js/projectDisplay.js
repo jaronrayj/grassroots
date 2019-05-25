@@ -69,6 +69,7 @@ $(document).ready(function () {
         $(".secondRow").empty();
         card(projectArray);
     });
+    // todo click on "find out more" and pull up modal with more info and copy button along w/join. Set up data-id on buttons
 
     //Project copy button
     $(document).on("click", ".copy-project", function () {
@@ -84,6 +85,7 @@ $(document).ready(function () {
         });
     });
 
+    //Project copy submit
     $(document).on("submit", ".copy-project-form", function (e) {
         e.preventDefault();
 
