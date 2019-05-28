@@ -5,7 +5,7 @@ body {
 
 /* BACKGROUND IMAGE */
 .background-image {
-    background-image: url("../images/projectHome\ background.png");
+    background-image: url("../images/homepageimage.png");
     height: 817px;
     width: 100%;
     margin-left: 5%;
@@ -22,7 +22,7 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #91AAE3;
+    background-color: #9CE6E1;
     overflow-x: hidden;
     padding-top: 20px;
 }
@@ -87,34 +87,31 @@ body {
     top: 97%;
     left: 65%;
 }
-
-/* TOP PROJECTS TEXT */
+/* GRASSROOTS TEXT */ 
 .title {
-    color: #5368B7;
+    color: #3BA1C4;
     font-weight: bold;
     font-size: 60px;
 }
 
-/* TOP PROJECTS DROP DOWN */
-.dropDown {
-    background-color: #91AAE3;
-    color: aliceblue;
+.text {
+    color: #3BA1C4;
+    font-weight: bold;
+    font-size: 40px;
 }
 
-/* CARDS */
-.viewBtn {
-    background-color: #5368B7;
-    outline-color: #324074;
-    color: white;
+.textDiv {
+
 }
 
-.cardBody {
-    background-color: #aec0ebd2;
-}
-
-.navBtn {
-    background-color: #5368B7;
-    color: white;
+.bottomImage {
+    background-image: url("../images/bottomhomepage.png");
+    height: 817px;
+    width: 100%;
+    margin-left: 10%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /* FOOTER/BUTTONS */
@@ -125,10 +122,9 @@ body {
     height: 50px;
     width: 100%;
     padding-top: 5px;
-    margin-top: 10px;
     padding-bottom: 5px;
     text-align: center;
-    background-color: #91AAE3;
+    background-color: #9CE6E1;
 }
 
 /* FOOTER SOCIAL MEDIA BUTTONS */
