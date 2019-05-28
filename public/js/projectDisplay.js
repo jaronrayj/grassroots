@@ -8,8 +8,7 @@ $(document).ready(function () {
         }
     );
 
-    function card(project) {
-
+    function displayInfo (row, project){
         for (let i = offset; i < offset + 3; i++) {
 
 
@@ -18,31 +17,21 @@ $(document).ready(function () {
             let cardBody = $("<div>").addClass("card-body cardBody");
             let cardTitle = $("<h5>").addClass("card-title").text(project[i].title);
             let cardText = $("<p>").addClass("card-text").text(project[i].location);
-            let button = $("<a>").addClass("btn btn-default viewBtn").attr("href", "/projects/" + project[i].id).text("Find out more!");
+            let button = $("<button>").addClass("btn moreInfo btn-default viewBtn").attr("href", "/projects/" + project[i].id).text("Find out more!").data("toggle", "modal").data("target", "#projectModal");
 
             cardBody.append(cardTitle).append(cardText);
             newDiv.append(img).append(cardBody).append(button);
-            $(".firstRow").append(newDiv);
+            $(row).append(newDiv);
         }
 
         offset += 3;
+    }
 
-        for (let i = offset; i < offset + 3; i++) {
+    function card(project) {
 
+        displayInfo("#firstRow", project);
+        displayInfo("#secondRow", project);
 
-            let newDiv = $("<div>").addClass("card").attr("style", "width: 18rem;");
-            let img = $("<img>").addClass("card-img-top").attr("src", "https://via.placeholder.com/100x50");
-            let cardBody = $("<div>").addClass("card-body cardBody");
-            let cardTitle = $("<h5>").addClass("card-title").text(project[i].title);
-            let cardText = $("<p>").addClass("card-text").text(project[i].location);
-            let button = $("<a>").addClass("btn btn-default viewBtn").attr("href", "/projects/" + project[i].id).text("Find out more!");
-
-            cardBody.append(cardTitle).append(cardText);
-            newDiv.append(img).append(cardBody).append(button);
-            $(".secondRow").append(newDiv);
-        }
-
-        offset += 3;
     }
 
     $(document).on("click", "#back", function () {
@@ -71,6 +60,7 @@ $(document).ready(function () {
     });
 
     // todo click on "find out more" and pull up modal with more info and copy button along w/join. Set up data-id on buttons
+
 
 
 });
