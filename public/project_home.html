@@ -15,10 +15,10 @@
   <!-- SIDE NAV BAR -->
   <div class="sidenav">
     <img class="logo" src="images/Screen Shot 2019-05-22 at 10.06.54 AM.png">
-    <a href="/projects/new">
+    <a href="/new/projects">
       <img class="newProjectBtn" src="images/Screen Shot 2019-05-22 at 10.11.19 AM.png">
     </a>
-    <a href="/projects/my">
+    <a href="/my/projects">
       <img class="myProjectsBtn" src="images/Screen Shot 2019-05-22 at 10.11.26 AM.png">
     </a>
     <a href="https://www.instagram.com">
@@ -40,14 +40,14 @@
       <h1 class="title">TOP PROJECTS</h1>
     </div>
     <!-- DROP DOWN -->
-    <div class="row h-100 justify-content-center align-items-center">
+    <!-- <div class="row h-100 justify-content-center align-items-center">
       <select id="category" class="dropDown" name="category">
         <option value="Cleanup">All</option>
         <option value="Cleanup">Cleanup</option>
         <option value="Community Service">Community Service</option>
         <option value="Helping Dan">Helping Dan</option>
       </select>
-    </div>
+    </div> -->
     <br>
 
     <!-- FIRST ROW OF PROJECT DIV -->
@@ -58,59 +58,146 @@
         <div class="secondRow card-deck"></div>
       </div>
 
-      <!-- NAVIGATION THROUGH PROJECTS -->
-    </div>
-    <br>
-    <div class="row justify-content-center align-items-center">
+      <!-- todo Need to make sure this looks pretty -->
+
       <button type="button" id="back" class="btn btn-light buttons">Back</button>
       <button type="button" id="more" class="btn btn-light buttons">More</button>
-    </div>
 
-    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Launch demo modal
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+      <!-- FOOTER -->
+      <footer class="footer1">
+        <div class="container">
+          <span class="text-light">
+            <a href="https://www.instagram.com">
+              <img class="instagramFoot" src="images/Instagram.png">
+            </a>
+            <a href="https://www.twitter.com">
+              <img class="twitterFoot" src="images/Twitter.png">
+            </a>
+            <a href="https://www.facebook.com">
+              <img class="facebookFoot" src="images/Facebook.png">
+            </a>
+          </span>
+        </div>
+      </footer>
+
+      <!-- CREATE PROJECT MODAL -->
+      <div class="modal" tabindex="-1" role="dialog" id="copy-project-modal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Create Project</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="copy-project-form form-horizontal">
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="title">Title:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="title" placeholder="" name="title" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="description">Description:</label>
+                  <div class="col-sm-10">
+                    <textarea class="form-control" id="description" placeholder="" name="description"
+                      required></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="location">Location:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="location" placeholder="Enter a location" name="location"
+                      required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="date">Date:</label>
+                  <div class="col-sm-10">
+                    <input type="datetime-local" class="form-control" id="date" placeholder="Enter a date" name="date"
+                      required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label col-sm-6" for="number-of-people">Number of People:</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control" id="number-of-people" placeholder=""
+                      name="number-of-people" min="1" required>
+                  </div>
+                </div>
+
+                <!-- <label class="control-label col-sm-2" for="category">Category:</label>
+                <div class="col-sm-10">
+                  <select id="category" name="category">
+                    <option value="Cleanup">Cleanup</option>
+                    <option value="Community Service">Community Service</option>
+                    <option value="Helping Dan">Helping Dan</option>
+                  </select>
+                </div> -->
+                <br>
+                <br>
+
+            </div>
+
+            <!-- NAVIGATION THROUGH PROJECTS -->
+          </div>
+          <br>
+          <div class="row justify-content-center align-items-center">
+            <button type="button" id="back" class="btn btn-light buttons">Back</button>
+            <button type="button" id="more" class="btn btn-light buttons">More</button>
+          </div>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Launch demo modal
           </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="projectModal" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
-    <!-- FOOTER -->
-    <footer class="footer1">
-      <div class="container">
-        <span class="text-light">
-          <a href="https://www.instagram.com">
-            <img class="instagramFoot" src="images/Instagram.png">
-          </a>
-          <a href="https://www.twitter.com">
-            <img class="twitterFoot" src="images/Twitter.png">
-          </a>
-          <a href="https://www.facebook.com">
-            <img class="facebookFoot" src="images/Facebook.png">
-          </a>
-        </span>
-      </div>
-    </footer>
+          <!-- FOOTER -->
+          <footer class="footer1">
+            <div class="container">
+              <span class="text-light">
+                <a href="https://www.instagram.com">
+                  <img class="instagramFoot" src="images/Instagram.png">
+                </a>
+                <a href="https://www.twitter.com">
+                  <img class="twitterFoot" src="images/Twitter.png">
+                </a>
+                <a href="https://www.facebook.com">
+                  <img class="facebookFoot" src="images/Facebook.png">
+                </a>
+              </span>
+            </div>
+          </footer>
 
-    <script src="./js/projectDisplay.js"></script>
+          <script src="./js/projectDisplay.js"></script>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
