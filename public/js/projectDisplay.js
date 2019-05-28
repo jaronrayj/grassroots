@@ -18,7 +18,8 @@ $(document).ready(function () {
             let cardBody = $("<div>").addClass("card-body cardBody");
             let cardTitle = $("<h5>").addClass("card-title").text(project[i].title);
             let cardText = $("<p>").addClass("card-text").text(project[i].location);
-            let button = $("<a>").addClass("btn btn-default viewBtn").attr("href", "/projects/" + project[i].id).text("Find out more!");
+            // let button = $("<a>").addClass("btn btn-default viewBtn").attr("href", "/projects/" + project[i].id).text("Find out more!");
+            let button = $("<button>").addClass("btn btn-default viewBtn").attr("project-id", project[i].id).text("Find out more!");
 
             cardBody.append(cardTitle).append(cardText);
             newDiv.append(img).append(cardBody).append(button);
@@ -35,7 +36,8 @@ $(document).ready(function () {
             let cardBody = $("<div>").addClass("card-body cardBody");
             let cardTitle = $("<h5>").addClass("card-title").text(project[i].title);
             let cardText = $("<p>").addClass("card-text").text(project[i].location);
-            let button = $("<a>").addClass("btn btn-default viewBtn").attr("href", "/projects/" + project[i].id).text("Find out more!");
+            // let button = $("<a>").addClass("btn btn-default viewBtn").attr("href", "/projects/" + project[i].id).text("Find out more!");
+            let button = $("<button>").addClass("btn btn-default viewBtn").attr("project-id", project[i].id).text("Find out more!");
 
             cardBody.append(cardTitle).append(cardText);
             newDiv.append(img).append(cardBody).append(button);
@@ -70,13 +72,41 @@ $(document).ready(function () {
         card(projectArray);
     });
     // todo click on "find out more" and pull up modal with more info and copy button along w/join. Set up data-id on buttons
+    $(document).on("click", ".viewBtn", function () {
+        let projectId = $(this).attr("project-id");
+
+        $.get("/api/projects/" + projectId, function (data) {
+            $(".modal-title-more").text(data.title);
+            $(".description").text(data.description);
+            $(".location").text(data.location);
+            $(".time").text(data.time);
+            $(".date").text(data.date);
+            $(".number-of-people").text(data.number_of_people)
+            $(".category").text(data.category_type);
+            $(".copy-project").attr("project-id", projectId);
+            $(".join-project").attr("project-id", projectId);
+            $("#find-out-more-modal").modal();
+        });
+    });
+
+    //Project Join Button
+    $(document).on("click", ".join-project", function () {
+        let projectId = $(this).attr("project-id");
+
+        $.post(`/api/projects/${projectId}/adduser`, function (data, status) {
+            if (status) {
+                alert(`Project Joined`);
+                window.location.replace("/my/projects");
+            };
+        });
+    });
 
     //Project copy button
     $(document).on("click", ".copy-project", function () {
         let projectId = $(this).attr("project-id");
 
         $.get("/api/projects/" + projectId, function (data) {
-
+            $("#find-out-more-modal").modal("hide");
             $("#title").val(data.title);
             $("#description").val(data.description);
             $("#number-of-people").val(data.number_of_people);

@@ -141,6 +141,24 @@ body {
     left: 52%;
 }
 
+/* MODALS */
+div#find-out-more-modal>div.modal-dialog {
+    max-width: 600px;
+}
+
+div.modal-header {
+    background-color: #91aae3;
+    color: #fff;
+}
+
+div#find-out-more-modal>.card-img-top {
+    margin: auto;
+}
+
+div.modal-footer {
+    background-color: #5368b7;
+}
+
 /* CODE FROM STICKY NAV? */
 @media screen and (max-height: 450px) {
     .sidenav {
