@@ -1,12 +1,12 @@
 $(document).ready(function () {
-    let projectArray = [];
-    let offset = 0;
-    $.get("/api/projects",
-        function (data) {
-            projectArray = data;
-            card(data);
-        }
-    );
+  let projectArray = [];
+  let offset = 0;
+  $.get("/api/projects",
+    function (data) {
+      projectArray = data;
+      card(data);
+    }
+  );
 
   function displayInfo(row, project) {
     for (let i = offset; i < offset + 3; i++) {
@@ -28,12 +28,12 @@ $(document).ready(function () {
   }
 
   function card(project) {
-    
+
     displayInfo(".firstRow", project);
     displayInfo(".secondRow", project);
-    
+
   }
-  
+
   $(document).on("click", "#back", function () {
 
     if (offset - 12 <= 0) {
@@ -50,75 +50,49 @@ $(document).ready(function () {
   });
 
   $(document).on("click", "#more", function () {
-      if (offset + 6 > projectArray.length) {
-          offset = projectArray.length - 6;
-      }
-      $(".firstRow").empty();
-      $(".secondRow").empty();
-      card(projectArray);
+    if (offset + 6 > projectArray.length) {
+      offset = projectArray.length - 6;
+    }
+    $(".firstRow").empty();
+    $(".secondRow").empty();
+    card(projectArray);
   });
 
   //Pull up modal with all project info, join, and copy buttons
   $(document).on("click", ".viewBtn", function () {
-      let projectId = $(this).attr("project-id");
-  
-      $.get("/api/projects/" + projectId, function (data) {
-          let date = data.date.substring(5, 8) + data.date.substring(8, 10) + "-" + data.date.substring(0, 4);
-          $(".modal-title-more").text(data.title);
-          $(".description").text(data.description);
-          $(".location").text(data.location);
-          $(".time").text(data.time);
-          $(".date").text(date);
-          $(".number-of-people").text(data.number_of_people)
-          $(".category").text(data.category_type);
-          $(".copy-project").attr("project-id", projectId);
-          $(".join-project").attr("project-id", projectId);
-          $("#find-out-more-modal").modal();
-      });
-  });
-
-  $.post(`/api/projects/${projectId}/adduser`, function (data, status) {
-      if (data === false) {
-          return alert("Sorry, but you've already joined this project");
-      };
-      alert("Congratulations! You've joined this project!");
-      window.location.replace("/my/projects");
-  });
-
-  // todo click on "find out more" and pull up modal with more info and copy button along w/join. Set up data-id on buttons
-  $(document).on("click", ".viewBtn", function () {
     let projectId = $(this).attr("data-project");
 
     $.get("/api/projects/" + projectId, function (data) {
-      console.log(data);
+      let date = data.date.substring(5, 8) + data.date.substring(8, 10) + "-" + data.date.substring(0, 4);
       $(".modal-title-more").text(data.title);
       $(".description").text(data.description);
       $(".location").text(data.location);
       $(".time").text(data.time);
-      $(".date").text(data.date);
+      $(".date").text(date);
       $(".number-of-people").text(data.number_of_people)
       $(".category").text(data.category_type);
-      $(".copy-project").attr("project-id", projectId);
-      $(".join-project").attr("project-id", projectId);
+      $(".copy-project").attr("data-project", projectId);
+      $(".join-project").attr("data-project", projectId);
       $("#find-out-more-modal").modal();
     });
   });
 
   //Project Join Button
   $(document).on("click", ".join-project", function () {
-    let projectId = $(this).attr("project-id");
+    let projectId = $(this).attr("data-project");
 
     $.post(`/api/projects/${projectId}/adduser`, function (data, status) {
-      if (status) {
-        alert(`Project Joined`);
-        window.location.replace("/my/projects");
+      if (data === false) {
+        return alert("Sorry, but you've already joined this project");
       };
+      alert("Congratulations! You've joined this project!");
+      window.location.replace("/projects/my");
     });
   });
 
   //Project copy button
   $(document).on("click", ".copy-project", function () {
-    let projectId = $(this).attr("project-id");
+    let projectId = $(this).attr("data-project");
 
     $.get("/api/projects/" + projectId, function (data) {
       $("#find-out-more-modal").modal("hide");
@@ -156,7 +130,7 @@ $(document).ready(function () {
     $.post("/api/projects", newProject, function (data, status) {
       if (status) {
         alert(`Project ${title} is created!`);
-        window.location.replace("/my/projects");
+        window.location.replace("/projects/my");
       };
     });
   });
