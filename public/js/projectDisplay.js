@@ -29,6 +29,7 @@ $(document).ready(function () {
 
     function card(project) {
 
+
         displayInfo(".firstRow", project);
         displayInfo(".secondRow", project);
 
@@ -59,13 +60,41 @@ $(document).ready(function () {
         card(projectArray);
     });
     // todo click on "find out more" and pull up modal with more info and copy button along w/join. Set up data-id on buttons
+    $(document).on("click", ".viewBtn", function () {
+        let projectId = $(this).attr("project-id");
+
+        $.get("/api/projects/" + projectId, function (data) {
+            $(".modal-title-more").text(data.title);
+            $(".description").text(data.description);
+            $(".location").text(data.location);
+            $(".time").text(data.time);
+            $(".date").text(data.date);
+            $(".number-of-people").text(data.number_of_people)
+            $(".category").text(data.category_type);
+            $(".copy-project").attr("project-id", projectId);
+            $(".join-project").attr("project-id", projectId);
+            $("#find-out-more-modal").modal();
+        });
+    });
+
+    //Project Join Button
+    $(document).on("click", ".join-project", function () {
+        let projectId = $(this).attr("project-id");
+
+        $.post(`/api/projects/${projectId}/adduser`, function (data, status) {
+            if (status) {
+                alert(`Project Joined`);
+                window.location.replace("/my/projects");
+            };
+        });
+    });
 
     //Project copy button
     $(document).on("click", ".copy-project", function () {
         let projectId = $(this).attr("project-id");
 
         $.get("/api/projects/" + projectId, function (data) {
-
+            $("#find-out-more-modal").modal("hide");
             $("#title").val(data.title);
             $("#description").val(data.description);
             $("#number-of-people").val(data.number_of_people);
