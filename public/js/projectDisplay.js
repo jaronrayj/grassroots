@@ -8,7 +8,7 @@ $(document).ready(function () {
         }
     );
 
-    function displayInfo (row, project){
+    function displayInfo(row, project) {
         for (let i = offset; i < offset + 3; i++) {
 
 
@@ -59,16 +59,18 @@ $(document).ready(function () {
         $(".secondRow").empty();
         card(projectArray);
     });
-    // todo click on "find out more" and pull up modal with more info and copy button along w/join. Set up data-id on buttons
+
+    //Pull up modal with all project info, join, and copy buttons
     $(document).on("click", ".viewBtn", function () {
         let projectId = $(this).attr("project-id");
 
         $.get("/api/projects/" + projectId, function (data) {
+            let date = data.date.substring(5, 8) + data.date.substring(8, 10) + "-" + data.date.substring(0, 4);
             $(".modal-title-more").text(data.title);
             $(".description").text(data.description);
             $(".location").text(data.location);
             $(".time").text(data.time);
-            $(".date").text(data.date);
+            $(".date").text(date);
             $(".number-of-people").text(data.number_of_people)
             $(".category").text(data.category_type);
             $(".copy-project").attr("project-id", projectId);
@@ -82,10 +84,11 @@ $(document).ready(function () {
         let projectId = $(this).attr("project-id");
 
         $.post(`/api/projects/${projectId}/adduser`, function (data, status) {
-            if (status) {
-                alert(`Project Joined`);
-                window.location.replace("/my/projects");
+            if (data === false) {
+                return alert("Sorry, but you've already joined this project");
             };
+            alert("Congratulations! You've joined this project!");
+            window.location.replace("/my/projects");
         });
     });
 

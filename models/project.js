@@ -62,7 +62,10 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Project.associate = (models) => {
-        Project.belongsToMany(models.User, { through: "ProjectUser" });
+        Project.belongsToMany(models.User, {
+            through: "ProjectUser",
+            onDelete: "cascade"
+        });
     };
     return Project;
 };
