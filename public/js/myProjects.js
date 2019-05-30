@@ -91,6 +91,15 @@ $(document).ready(function() {
     });
   });
 
+  if(projectArray > 6){
+    $("#more").show();
+    $("#back").show();
+} else {
+    $("#more").hide();
+    $("#back").hide();
+
+  }
+
   //Project copy submit
   $(document).on("submit", ".copy-project-form", function (e) {
     e.preventDefault();
