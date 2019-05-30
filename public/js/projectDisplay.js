@@ -9,14 +9,37 @@ $(document).ready(function () {
     }
   );
 
-  $(document).on("value", "#category", function () {
+  $(document).on("change", "#category", function () {
     var category = $("#category").val();
-    console.log("TCL: category", category);
+
+    if (category === "All") {
+      $.get("/api/projects",
+        function (data) {
+          console.log("TCL: data", data);
+          projectArray = data;
+          card(projectArray);
+        }
+      );
+    } else {
+      var url = "/api/projects/" + category;
+      $.get(url,
+        function (data) {
+          console.log("TCL: data", data);
+
+          projectArray = data;
+          card(projectArray);
+        })
+    };
   });
 
   function displayInfo(row, project) {
-    for (var i = offset; i < offset + 3; i++) {
+    if (project.length - offset < 3){
+      var length = project.length - offset;
+    } else {
+      var length = offset + 3;
+    }
 
+    for (var i = offset; i < length; i++) {
 
       var newDiv = $("<div>").addClass("card projectCard").attr("style", "width: 18rem;");
       var img = $("<img>").addClass("card-img-top").attr("src", "https://via.placeholder.com/100x50");
@@ -35,6 +58,8 @@ $(document).ready(function () {
 
   function card(project) {
 
+    $(".firstRow").empty();
+    $(".secondRow").empty();
     displayInfo(".firstRow", project);
     displayInfo(".secondRow", project);
 

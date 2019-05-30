@@ -114,6 +114,17 @@ module.exports = function (app) {
     });
   });
 
+  // Filter by project category
+  app.get("/api/projects/:projectCategory", function (req, res) {
+    db.Project.findAll({
+      where: {
+        category_type: req.params.projectCategory
+      }
+    }).then(function (data) {
+      res.json(data);
+    });
+  });
+
   // Create a new project and create foreign keys between users and projects
   app.post("/api/projects", function (req, res) {
     db.Project.create(req.body)
