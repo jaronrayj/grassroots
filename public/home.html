@@ -17,10 +17,10 @@
     <a href="/signup">
       <img class="newProjectBtn" src="images/bluesignup.png">
     </a>
-    <a href="/signup">
+    <button type="button" data-toggle="modal" data-target="#exampleModal">
       <img class="myProjectsBtn" src="images/bluelogin.png">
-    </a>
-    <a href=>
+    </button>
+    <a href="/logout">
       <img class="logoutBtn" src="images/bluelogout.png">
     </a>
     <a href="https://www.instagram.com">
@@ -39,43 +39,86 @@
 
   <div class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
-      <h1 class="title">TOP PROJECTS</h1>
-      <h3 class="text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum, vero debitis? Possimus adipisci
-        placeat tempora quas, deserunt incidunt libero maiores, vero, nihil vel quisquam est et ratione neque! Quas,
-        aliquam.</h3>
+      <h1 class="title">Grassroots</h1>
+      <!-- <h3 class="text">"Accelerating the way communities thrive."</h3> -->
     </div>
 
     <div class="row h-100 justify-content-center align-items-center">
-      <h1>THIS IS THE ABOUT US</h1>
-      <h3>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum, vero debitis? Possimus adipisci placeat
-        tempora quas, deserunt incidunt libero maiores, vero, nihil vel quisquam est et ratione neque! Quas, aliquam.
+      <h3 class="text">"Accelerating the way communities thrive."</h3>
+    </div>
+
+    <div class="row h-100 justify-content-center align-items-center">
+      <h1>Our Mission</h1>
+      <h3>Here at Grassroots, it is our mission to bring out the best of your communities. By signing up, you'll have
+        access to a range of working community projects accross the world! From community engagement, environmental
+        awareness, activism, and many more categories, Grassroots is your go-to app for organizing your community
+        projects. Simply search for an existing project, join a project, copy a project's framework to implement it into
+        your community, or create your own!
       </h3>
     </div>
     <div class="row h-100 justify-content-center align-items-center">
-      <h1>THIS IS THE SAMPLE PROJECT</h1>
+      <h3>Check out this featured Community Project:</h3>
     </div>
     <div class="row h-100 justify-content-center align-items-center">
 
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="./images/AdobeStock_176681813.jpeg" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="btn btn-primary">Check it out!</a>
+          <h5 class="card-title">Liberty Park Cleanup</h5>
+          <p class="card-text"><small class="text-muted">June 8th, 2019 @ 8:00 AM</small></p>
+          <!-- <p class="card-text"><small class="text-muted">8:00 AM - 12:00 PM</small></p> -->
+          <p class="card-text">Come join the Liberty-Park neighborhood in cleaning up the park. Breakfast will be
+            provided to all volunteers. We will be picking up trash and recycling what we can
+            until about 12:00 PM. Hope to see you there!</p>
         </div>
       </div>
     </div>
-    <div class="row h-100 justify-content-center align-items-center">
+    <!-- Commented out for now -->
+    <!-- <div class="row h-100 justify-content-center align-items-center">
       <h1>THIS IS THE CONTACT US</h1>
     </div>
     <div class="row h-100 justify-content-center align-items-center">
 
       <h3>Don't call me.</h3>
-    </div>
+    </div> -->
   </div>
 
   <div class="bottomImage"></div>
+
+  <!-- LOGIN MODAL -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Login Form</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-md-6 col-md-offset-3">
+            <form class="login">
+              <div class="form-group">
+                <label for="user_name-input">Username</label>
+                <input type="text" class="form-control" id="user_name-input" placeholder="Username" required>
+              </div>
+              <div class="form-group">
+                <label for="password-input">Password</label>
+                <input type="password" class="form-control" id="password-input" placeholder="Password" required>
+              </div>
+              <button type="submit" class="btn btn-secondary">Login</button>
+            </form>
+            <br />
+            <p>Or sign up <a href="/signup">here</a></p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="footer1">
@@ -102,5 +145,6 @@
   integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
   integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="/js/home.js" type="text/javascript"></script>
 
 </html>
