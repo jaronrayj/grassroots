@@ -115,7 +115,7 @@ module.exports = function (app) {
   });
 
   // Filter by project category
-  app.get("/api/projects/:projectCategory", function (req, res) {
+  app.get("/api/projects/category/:projectCategory", function (req, res) {
     db.Project.findAll({
       where: {
         category_type: req.params.projectCategory

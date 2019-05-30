@@ -4,36 +4,48 @@ $(document).ready(function () {
 
   $.get("/api/projects",
     function (data) {
+      console.log("TCL: data", data);
       projectArray = data;
-      card(projectArray);
+      card(data);
     }
   );
 
+  //  
   $(document).on("change", "#category", function () {
     var category = $("#category").val();
 
     if (category === "All") {
-      $.get("/api/projects",
-        function (data) {
+      $.ajax({
+        type: "GET",
+        url: "/api/projects",
+        success: function (data) {
+          projectArray = [];
+          console.log("TCL: projectArray", projectArray);
           console.log("TCL: data", data);
           projectArray = data;
-          card(projectArray);
+          console.log("TCL: projectArray", projectArray);
+          card(data);
         }
-      );
+      });
     } else {
-      var url = "/api/projects/" + category;
-      $.get(url,
-        function (data) {
+      var url = "/api/projects/category/" + category;
+      $.ajax({
+        type: "GET",
+        url: url,
+        success: function (data) {
+          projectArray = [];
+          console.log("TCL: projectArray", projectArray);
           console.log("TCL: data", data);
-
           projectArray = data;
-          card(projectArray);
-        })
+          console.log("TCL: projectArray", projectArray);
+          card(data);
+        }
+      });
     };
   });
 
   function displayInfo(row, project) {
-    if (project.length - offset < 3){
+    if (project.length - offset < 3) {
       var length = project.length - offset;
     } else {
       var length = offset + 3;
