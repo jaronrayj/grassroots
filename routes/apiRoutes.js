@@ -152,6 +152,23 @@ module.exports = function (app) {
       });
   });
 
+  // // Get all projects for a user
+  // app.get("/api/projects/my", function (req, res) {
+  //   db.ProjectUser.findAll({
+  //       where: {
+  //         UserId: req.session.passport.user.id
+  //       }
+  //     })
+  //     .then(function (data) {
+  //       res.json(data);
+  //     })
+  //     .catch(function (err) {
+  //       if (err) {
+  //         throw err;
+  //       }
+  //     });
+  // });
+
   //If user is already a part of a project return false, otherwise create the new record
   app.post("/api/projects/:id/adduser", function (req, res) {
     db.ProjectUser.count({

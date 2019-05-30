@@ -1,24 +1,18 @@
-$(document).ready(function () {
+$(document).ready(function() {
   var projectArray = [];
   var offset = 0;
-
-  $.get("/api/projects",
+  $.get("/api/users/me",
     function (data) {
-      projectArray = data;
+      projectArray = data.Projects;
       card(projectArray);
     }
   );
 
-  $(document).on("value", "#category", function () {
-    var category = $("#category").val();
-    console.log("TCL: category", category);
-  });
-
   function displayInfo(row, project) {
     for (var i = offset; i < offset + 3; i++) {
-
-
-      var newDiv = $("<div>").addClass("card projectCard").attr("style", "width: 18rem;");
+      var newDiv = $("<div>")
+        .addClass("card projectCard")
+        .attr("style", "width: 18rem;");
       var img = $("<img>").addClass("card-img-top").attr("src", "https://via.placeholder.com/100x50");
       var cardBody = $("<div>").addClass("card-body cardBody");
       var cardTitle = $("<h5>").addClass("card-title").text(project[i].title);
@@ -34,12 +28,11 @@ $(document).ready(function () {
   }
 
   function card(project) {
-
     displayInfo(".firstRow", project);
     displayInfo(".secondRow", project);
-
   }
 
+//  Go back through projects available
   $(document).on("click", "#back", function () {
 
     if (offset - 12 <= 0) {
@@ -55,6 +48,7 @@ $(document).ready(function () {
     }
   });
 
+  //   Go forward through projects available
   $(document).on("click", "#more", function () {
     if (offset + 6 > projectArray.length) {
       offset = projectArray.length - 6;
@@ -62,6 +56,20 @@ $(document).ready(function () {
     $(".firstRow").empty();
     $(".secondRow").empty();
     card(projectArray);
+  });
+
+  //Project copy button
+  $(document).on("click", ".copy-project", function () {
+    var projectId = $(this).attr("data-project");
+
+    $.get("/api/projects/" + projectId, function (data) {
+      $("#find-out-more-modal").modal("hide");
+      $("#title").val(data.title);
+      $("#description").val(data.description);
+      $("#number-of-people").val(data.number_of_people);
+      $(`select#category option:contains("${data.category_type}")`).prop("selected", true);
+      $("#copy-project-modal").modal();
+    });
   });
 
   //Pull up modal with all project info, join, and copy buttons
@@ -80,33 +88,6 @@ $(document).ready(function () {
       $(".copy-project").attr("data-project", projectId);
       $(".join-project").attr("data-project", projectId);
       $("#find-out-more-modal").modal();
-    });
-  });
-
-  //Project Join Button
-  $(document).on("click", ".join-project", function () {
-    var projectId = $(this).attr("data-project");
-
-    $.post(`/api/projects/${projectId}/adduser`, function (data, status) {
-      if (data === false) {
-        return alert("Sorry, but you've already joined this project");
-      };
-      alert("Congratulations! You've joined this project!");
-      window.location.replace("/projects/my");
-    });
-  });
-
-  //Project copy button
-  $(document).on("click", ".copy-project", function () {
-    var projectId = $(this).attr("data-project");
-
-    $.get("/api/projects/" + projectId, function (data) {
-      $("#find-out-more-modal").modal("hide");
-      $("#title").val(data.title);
-      $("#description").val(data.description);
-      $("#number-of-people").val(data.number_of_people);
-      $(`select#category option:contains("${data.category_type}")`).prop("selected", true);
-      $("#copy-project-modal").modal();
     });
   });
 
@@ -140,5 +121,4 @@ $(document).ready(function () {
       };
     });
   });
-
 });
