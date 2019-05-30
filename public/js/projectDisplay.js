@@ -6,34 +6,35 @@ $(document).ready(function () {
     function (data) {
       projectArray = data;
       card(projectArray);
+      console.log(projectArray)
     }
   );
 
-  $(document).on("change", "#category", function () {
-    var category = $("#category").val();
+  // $(document).on("change", "#category", function () {
+  //   var category = $("#category").val();
 
-    if (category === "All") {
-      $.get("/api/projects",
-        function (data) {
-          console.log("TCL: data", data);
-          projectArray = data;
-          card(projectArray);
-        }
-      );
-    } else {
-      var url = "/api/projects/" + category;
-      $.get(url,
-        function (data) {
-          console.log("TCL: data", data);
+  //   if (category === "All") {
+  //     $.get("/api/projects",
+  //       function (data) {
+  //         console.log("TCL: data", data);
+  //         projectArray = data;
+  //         card(projectArray);
+  //       }
+  //     );
+  //   } else {
+  //     var url = "/api/projects/" + category;
+  //     $.get(url,
+  //       function (data) {
+  //         console.log("TCL: data", data);
 
-          projectArray = data;
-          card(projectArray);
-        })
-    };
-  });
+  //         projectArray = data;
+  //         card(projectArray);
+  //       })
+  //   };
+  // });
 
   function displayInfo(row, project) {
-    if (project.length - offset < 3){
+    if (project.length - offset < 3) {
       var length = project.length - offset;
     } else {
       var length = offset + 3;
@@ -92,8 +93,10 @@ $(document).ready(function () {
   //Pull up modal with all project info, join, and copy buttons
   $(document).on("click", ".viewBtn", function () {
     var projectId = $(this).attr("data-project");
+    console.log(projectId);
 
     $.get("/api/projects/" + projectId, function (data) {
+      console.log(data);
       var date = data.date.substring(5, 8) + data.date.substring(8, 10) + "-" + data.date.substring(0, 4);
       $(".modal-title-more").text(data.title);
       $(".description").text(data.description);
