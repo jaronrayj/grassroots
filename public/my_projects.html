@@ -3,10 +3,10 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="styles/myProjects.css">
+  <!-- <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8"> -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/styles/myProjects.css">
   <title>My Projects</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -14,24 +14,24 @@
 <body>
   <!-- SIDE NAV BAR -->
   <div class="sidenav">
-    <img class="logo" src="images/Screen Shot 2019-05-22 at 10.06.54 AM.png">
+    <img class="logo" src="/images/Screen Shot 2019-05-22 at 10.06.54 AM.png">
     <a href="/projects/new">
-      <img class="newProjectBtn" src="images/Screen Shot 2019-05-22 at 10.11.19 AM.png">
+      <img class="newProjectBtn" src="/images/Screen Shot 2019-05-22 at 10.11.19 AM.png">
     </a>
     <a href="/projects/my">
-      <img class="myProjectsBtn" src="images/Screen Shot 2019-05-22 at 10.11.26 AM.png">
+      <img class="myProjectsBtn" src="/images/Screen Shot 2019-05-22 at 10.11.26 AM.png">
     </a>
     <a href="/logout">
-      <img class="logoutBtn" src="images/purplelogout.png">
+      <img class="logoutBtn" src="/images/purplelogout.png">
     </a>
     <a href="https://www.instagram.com">
-      <img class="instagramNav" src="images/Instagram.png">
+      <img class="instagramNav" src="/images/Instagram.png">
     </a>
     <a href="https://www.twitter.com">
-      <img class="twitterNav" src="images/Twitter.png">
+      <img class="twitterNav" src="/images/Twitter.png">
     </a>
     <a href="https://www.facebook.com">
-      <img class="facebookNav" src="images/Facebook.png">
+      <img class="facebookNav" src="/images/Facebook.png">
     </a>
   </div>
 
@@ -43,11 +43,9 @@
     </div>
 
     <div class="row h-100 justify-content-center align-items-center">
-      <div>
-        <div class="firstRow card-deck"></div>
-        <br>
-        <div class="secondRow card-deck"></div>
-      </div>
+      <div class="firstRow card-deck"></div>
+      <br>
+      <div class="secondRow card-deck"></div>
     </div>
 
     <!-- FIND OUT MORE MODAL -->
@@ -171,51 +169,53 @@
               <div class="row">
                 <div class="col-sm-12">
                   <select id="category" name="category">
+                    <option value="All">All</option>
                     <option value="Cleanup">Cleanup</option>
                     <option value="Community Service">Community Service</option>
-                    <option value="Helping Dan">Helping Dan</option>
+                    <option value="Trashtag">Trashtag</option>
+                    <option value="Food Bank">Food Bank</option>
+                    <option value="Volunteering">Volunteering</option>
                   </select>
                 </div>
               </div>
-          </div>
 
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary copy-project-submit">Submit</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary copy-project-submit">Submit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </form>
           </div>
-          </form>
         </div>
+      </div>
+
+      <br>
+      <div class="row justify-content-center align-items-center">
+        <button type="button" id="back" class="navBtn btn btn-light">Back</button>
+        <button type="button" id="more" class="navBtn btn btn-light">More</button>
       </div>
     </div>
 
-    <br>
-    <div class="row justify-content-center align-items-center">
-      <button type="button" id="back" class="navBtn btn btn-light">Back</button>
-      <button type="button" id="more" class="navBtn btn btn-light">More</button>
-    </div>
-  </div>
+    <!-- DIV FOR BACKGROUND PHOTO (IN CSS) -->
+    <div class="background-image"></div>
 
-  <!-- DIV FOR BACKGROUND PHOTO (IN CSS) -->
-  <div class="background-image"></div>
+    <!-- FOOTER -->
+    <footer class="footer1">
+      <div class="container">
+        <span class="text-light">
+          <a href="https://www.instagram.com">
+            <img class="instagramFoot" src="/images/Instagram.png">
+          </a>
+          <a href="https://www.twitter.com">
+            <img class="twitterFoot" src="/images/Twitter.png">
+          </a>
+          <a href="https://www.facebook.com">
+            <img class="facebookFoot" src="/images/Facebook.png">
+          </a>
+        </span>
+      </div>
+    </footer>
 
-  <!-- FOOTER -->
-  <footer class="footer1">
-    <div class="container">
-      <span class="text-light">
-        <a href="https://www.instagram.com">
-          <img class="instagramFoot" src="images/Instagram.png">
-        </a>
-        <a href="https://www.twitter.com">
-          <img class="twitterFoot" src="images/Twitter.png">
-        </a>
-        <a href="https://www.facebook.com">
-          <img class="facebookFoot" src="images/Facebook.png">
-        </a>
-      </span>
-    </div>
-  </footer>
-
-  <script src="/js/myProjects.js"></script> -->
+    <script src="/js/myProjects.js"></script> -->
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
