@@ -10,7 +10,7 @@ $(document).ready(function() {
 
   function displayInfo(row, project) {
     if (project.length - offset < 3) {
-      var length = project.length - offset;
+      var length = project.length;
     } else {
       var length = offset + 3;
     }
