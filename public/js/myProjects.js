@@ -9,7 +9,12 @@ $(document).ready(function() {
   );
 
   function displayInfo(row, project) {
-    for (var i = offset; i < offset + 3; i++) {
+    if (project.length - offset < 3) {
+      var length = project.length - offset;
+    } else {
+      var length = offset + 3;
+    }
+    for (var i = offset; i < length; i++) {
       var newDiv = $("<div>")
         .addClass("card projectCard")
         .attr("style", "width: 18rem;");

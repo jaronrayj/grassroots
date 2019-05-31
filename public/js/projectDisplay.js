@@ -5,33 +5,43 @@ $(document).ready(function () {
   $.get("/api/projects",
     function (data) {
       projectArray = data;
-      card(projectArray);
-      console.log(projectArray)
+      card(data);
     }
   );
 
-  // $(document).on("change", "#category", function () {
-  //   var category = $("#category").val();
+  //  
+  $(document).on("change", "#category", function () {
+    var category = $("#category").val();
 
-  //   if (category === "All") {
-  //     $.get("/api/projects",
-  //       function (data) {
-  //         console.log("TCL: data", data);
-  //         projectArray = data;
-  //         card(projectArray);
-  //       }
-  //     );
-  //   } else {
-  //     var url = "/api/projects/" + category;
-  //     $.get(url,
-  //       function (data) {
-  //         console.log("TCL: data", data);
-
-  //         projectArray = data;
-  //         card(projectArray);
-  //       })
-  //   };
-  // });
+    if (category === "All") {
+      $.ajax({
+        type: "GET",
+        url: "/api/projects"
+      }).then(function (data) {
+        console.log("TCL: data", data);
+        offset = 0;
+        projectArray = data;
+        card(data);
+      });
+    } else {
+      var url = "/api/projects/category/" + category;
+      $.ajax({
+        type: "GET",
+        url: url
+      }).then(function (data) {
+        console.log("TCL: data", data);
+        if (data[0] === undefined) {
+          $(".firstRow").empty();
+          $(".secondRow").empty();
+          $(".firstRow").text("No current results, please choose a different category.");
+        } else {
+          offset = 0;
+          projectArray = data;
+          card(data);
+        }
+      });
+    };
+  });
 
   function displayInfo(row, project) {
     if (project.length - offset < 3) {
