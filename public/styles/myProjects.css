@@ -12,6 +12,8 @@ html, body {
 .background-image {
     background-image: url("../images/purplebottom.png");
     height: 381px;
+    bottom: 50px;
+    position: fixed;
     width: 100%;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -116,7 +118,7 @@ html, body {
 
 /* FOOTER/BUTTONS */
 .footer1 {
-    position: relative;
+    position: fixed;
     left: 0;
     bottom: 0;
     height: 50px;
