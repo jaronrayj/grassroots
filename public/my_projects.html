@@ -19,7 +19,7 @@
       <img class="newProjectBtn" src="/images/Screen Shot 2019-05-22 at 10.11.19 AM.png">
     </a>
     <a href="/projects">
-      <img class="myProjectsBtn" src="images/projectHomeButton.png">
+      <img class="myProjectsBtn" src="/images/projectHomeButton.png">
     </a>
     <a href="/logout">
       <img class="logoutBtn" src="/images/purplelogout.png">
@@ -103,10 +103,10 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary update-project">Update Project</button>
+          <button type="submit" class="btn btn-info update-project">Update Project</button>
+          <button type="submit" class="btn btn-primary copy-project">Copy</button>
           <button type="submit" class="btn btn-danger delete-project">Delete Project</button>
-          <button type="submit" class="btn navBtn btn-primary copy-project">Copy</button>
-          <button type="button" class="btn navBtn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -128,7 +128,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <label class="control-label" for="title">Title:</label>
-                  <input type="text" class="form-control" id="title" placeholder="" name="title" autofocus required>
+                  <input type="text" class="form-control" id="copy-title" placeholder="" name="title" autofocus required>
                 </div>
               </div>
             </div>
@@ -137,7 +137,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <label class="control-label col-sm-2" for="description">Description:</label>
-                  <textarea class="form-control" id="description" placeholder="" name="description" rows="7"
+                  <textarea class="form-control" id="copy-description" placeholder="" name="description" rows="7"
                     required></textarea>
                 </div>
               </div>
@@ -147,7 +147,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <label class="control-label" for="location">Location:</label>
-                  <input type="text" class="form-control" id="location" placeholder="Enter a location" name="location"
+                  <input type="text" class="form-control" id="copy-location" placeholder="Enter a location" name="location"
                     required>
                 </div>
               </div>
@@ -157,7 +157,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <label class="control-label col-sm-2" for="date">Date:</label>
-                  <input type="datetime-local" class="form-control" id="date" placeholder="Enter a date" name="date"
+                  <input type="datetime-local" class="form-control" id="copy-date" placeholder="Enter a date" name="date"
                     required>
                 </div>
               </div>
@@ -167,7 +167,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <label class="control-label col-sm-6" for="number-of-people">Number of People:</label>
-                  <input type="number" class="form-control" id="number-of-people" placeholder="" name="number-of-people"
+                  <input type="number" class="form-control" id="copy-number-of-people" placeholder="" name="number-of-people"
                     min="1" required>
                 </div>
               </div>
@@ -176,7 +176,7 @@
             <label class="control-label col-sm-2" for="category">Category:</label>
             <div class="row">
               <div class="col-sm-12">
-                <select id="category" name="category">
+                <select id="copy-category" name="category">
                   <option value="All">All</option>
                   <option value="Cleanup">Cleanup</option>
                   <option value="Community Service">Community Service</option>
@@ -186,6 +186,7 @@
                 </select>
               </div>
             </div>
+          </div>
 
             <div class="modal-footer">
               <button type="submit" class="btn btn-primary copy-project-submit">Submit</button>
@@ -213,7 +214,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <label class="control-label" for="title">Title:</label>
-                  <input type="text" class="form-control" id="title" placeholder="" name="title" autofocus required>
+                  <input type="text" class="form-control" id="update-title" placeholder="" name="title" autofocus required>
                 </div>
               </div>
             </div>
@@ -221,7 +222,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <label class="control-label col-sm-2" for="description">Description:</label>
-                  <textarea class="form-control" id="description" placeholder="" name="description" rows="7"
+                  <textarea class="form-control" id="update-description" placeholder="" name="description" rows="7"
                     required></textarea>
                 </div>
               </div>
@@ -231,7 +232,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <label class="control-label" for="location">Location:</label>
-                  <input type="text" class="form-control" id="location" placeholder="Enter a location" name="location"
+                  <input type="text" class="form-control" id="update-location" placeholder="Enter a location" name="location"
                     required>
                 </div>
               </div>
@@ -241,7 +242,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <label class="control-label col-sm-2" for="date">Date:</label>
-                  <input type="datetime-local" class="form-control" id="date" placeholder="Enter a date" name="date"
+                  <input type="datetime-local" class="form-control" id="update-date" placeholder="Enter a date" name="date"
                     required>
                 </div>
               </div>
@@ -251,11 +252,12 @@
               <div class="row">
                 <div class="col-sm-12">
                   <label class="control-label col-sm-6" for="number-of-people">Number of People:</label>
-                  <input type="number" class="form-control" id="number-of-people" placeholder="" name="number-of-people"
+                  <input type="number" class="form-control" id="update-number-of-people" placeholder="" name="number-of-people"
                     min="1" required>
                 </div>
               </div>
             </div>
+          </div>
             
             <div class="modal-footer">
               <button type="submit" class="btn btn-primary copy-project-submit">Submit</button>
