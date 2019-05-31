@@ -12,19 +12,21 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../public/home.html"));
   });
 
-  app.get("/signup", function (req, res) {
-    if (req.user) {
-      res.redirect("/projects");
-    }
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
-  });
+  // OBSOLETE
+  // app.get("/signup", function (req, res) {
+  //   if (req.user) {
+  //     res.redirect("/projects");
+  //   }
+  //   res.sendFile(path.join(__dirname, "../public/signup.html"));
+  // });
 
-  app.get("/login", function (req, res) {
-    if (req.user) {
-      res.redirect("/projects");
-    }
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
-  });
+  // OBSOLETE
+  // app.get("/login", function (req, res) {
+  //   if (req.user) {
+  //     res.redirect("/projects");
+  //   }
+  //   res.sendFile(path.join(__dirname, "../public/home.html"));
+  // });
 
   app.get("/projects/new", isAuthenticated, function (req, res) {
     res.sendFile(path.join(__dirname, "../public/new_project.html"));
