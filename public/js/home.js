@@ -1,5 +1,50 @@
 $(document).ready(function () {
 
+  $(document).on("submit", ".create-user", function (e) {
+    e.preventDefault();
+
+    var user_name = $("#username")
+      .val()
+      .trim();
+
+    if (user_name.length < 6) {
+      $("#username-validate").text(
+        "Please have at least 6 characters in length"
+      );
+    }
+
+    var email = $("#email")
+      .val()
+      .trim();
+    var password = $("#pwd")
+      .val()
+      .trim();
+    if (password.length < 6) {
+      $("#password-validate").text(
+        "Please have at least 6 characters in length"
+      );
+    }
+    var pwdCheck = $("#pwd2")
+      .val()
+      .trim();
+
+    if (password !== pwdCheck) {
+      $("#password2-validate").text("These passwords do not match.");
+    } else {
+      // AUTHENTICATION WORKING //
+      $.post("/api/signup", {
+        user_name: user_name,
+        password: password,
+        email: email
+      })
+        .then(function (data) {
+          window.location.replace(data);
+        })
+        .catch(function (err) {
+          console.log(err.resposeJSON);
+        });
+    }
+  });
   // Getting references to our form and inputs
   var loginForm = $("form.login");
   var user_nameInput = $("input#user_name-input");
@@ -14,6 +59,8 @@ $(document).ready(function () {
     };
 
     if (!userData.user_name || !userData.password) {
+      $("#password-login-validate").text("Please enter your password...");
+      $("#username-login-validate").text("Please enter your username...");
       return;
     }
 
@@ -34,7 +81,14 @@ $(document).ready(function () {
         // If there's an error, log the error
       })
       .catch(function (err) {
-        console.log(err);
+        if (err) {
+          $("#password-login-validate").text(
+            "Please make sure your password is correct..."
+          );
+          $("#username-login-validate").text(
+            "Please make sure your username is correct..."
+          );
+        }
       });
   }
 });

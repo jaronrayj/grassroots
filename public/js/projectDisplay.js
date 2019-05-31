@@ -5,35 +5,46 @@ $(document).ready(function () {
   $.get("/api/projects",
     function (data) {
       projectArray = data;
-      card(projectArray);
+      card(data);
     }
   );
 
+  //  
   $(document).on("change", "#category", function () {
     var category = $("#category").val();
 
     if (category === "All") {
-      $.get("/api/projects",
-        function (data) {
-          console.log("TCL: data", data);
-          projectArray = data;
-          card(projectArray);
-        }
-      );
+      $.ajax({
+        type: "GET",
+        url: "/api/projects"
+      }).then(function (data) {
+        console.log("TCL: data", data);
+        offset = 0;
+        projectArray = data;
+        card(data);
+      });
     } else {
-      var url = "/api/projects/" + category;
-      $.get(url,
-        function (data) {
-          console.log("TCL: data", data);
-
+      var url = "/api/projects/category/" + category;
+      $.ajax({
+        type: "GET",
+        url: url
+      }).then(function (data) {
+        console.log("TCL: data", data);
+        if (data[0] === undefined) {
+          $(".firstRow").empty();
+          $(".secondRow").empty();
+          $(".firstRow").text("No current results, please choose a different category.");
+        } else {
+          offset = 0;
           projectArray = data;
-          card(projectArray);
-        })
+          card(data);
+        }
+      });
     };
   });
 
   function displayInfo(row, project) {
-    if (project.length - offset < 3){
+    if (project.length - offset < 3) {
       var length = project.length - offset;
     } else {
       var length = offset + 3;
@@ -92,8 +103,10 @@ $(document).ready(function () {
   //Pull up modal with all project info, join, and copy buttons
   $(document).on("click", ".viewBtn", function () {
     var projectId = $(this).attr("data-project");
+    console.log(projectId);
 
     $.get("/api/projects/" + projectId, function (data) {
+      console.log(data);
       var date = data.date.substring(5, 8) + data.date.substring(8, 10) + "-" + data.date.substring(0, 4);
       $(".modal-title-more").text(data.title);
       $(".description").text(data.description);

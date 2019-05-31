@@ -17,10 +17,10 @@ module.exports = function (app) {
   app.post("/api/signup", function (req, res) {
     console.log(req.body);
     db.User.create({
-        user_name: req.body.user_name,
-        password: req.body.password,
-        email: req.body.email
-      })
+      user_name: req.body.user_name,
+      password: req.body.password,
+      email: req.body.email
+    })
       .then(function () {
         res.redirect(307, "/api/login");
       })
@@ -85,10 +85,10 @@ module.exports = function (app) {
   // Delete a user
   app.delete("/api/users/:id", function (req, res) {
     db.User.destroy({
-        where: {
-          id: req.params.id
-        }
-      })
+      where: {
+        id: req.params.id
+      }
+    })
       .then(function (data) {
         res.json(data);
       })
@@ -115,7 +115,7 @@ module.exports = function (app) {
   });
 
   // Filter by project category
-  app.get("/api/projects/:projectCategory", function (req, res) {
+  app.get("/api/projects/category/:projectCategory", function (req, res) {
     db.Project.findAll({
       where: {
         category_type: req.params.projectCategory
@@ -149,10 +149,10 @@ module.exports = function (app) {
   // Get single project info
   app.get("/api/projects/:id", function (req, res) {
     db.Project.findOne({
-        where: {
-          id: req.params.id
-        }
-      })
+      where: {
+        id: req.params.id
+      }
+    })
       .then(function (data) {
         res.json(data);
       })
@@ -183,19 +183,19 @@ module.exports = function (app) {
   //If user is already a part of a project return false, otherwise create the new record
   app.post("/api/projects/:id/adduser", function (req, res) {
     db.ProjectUser.count({
-        where: {
-          UserId: req.session.passport.user.id,
-          ProjectId: req.params.id
-        }
-      })
+      where: {
+        UserId: req.session.passport.user.id,
+        ProjectId: req.params.id
+      }
+    })
       .then(function (count) {
         if (count !== 0) {
           return res.json(false);
         };
         db.ProjectUser.create({
-            ProjectId: req.params.id,
-            UserId: req.session.passport.user.id
-          })
+          ProjectId: req.params.id,
+          UserId: req.session.passport.user.id
+        })
           .then(function (data) {
             res.json(data);
           })
@@ -219,10 +219,10 @@ module.exports = function (app) {
   // Delete a specific project
   app.delete("/api/projects/:id", function (req, res) {
     db.Project.destroy({
-        where: {
-          id: req.params.id
-        }
-      })
+      where: {
+        id: req.params.id
+      }
+    })
       .then(function (data) {
         res.json(data);
       })

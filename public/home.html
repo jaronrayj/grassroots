@@ -16,10 +16,10 @@
 
   <div class="sidenav">
     <img class="logo" src="images/homepagelogo.png">
-    <a href="/signup">
+    <button type="button" data-toggle="modal" data-target="#signupModal">
       <img class="newProjectBtn" src="images/bluesignup.png">
-    </a>
-    <button type="button" data-toggle="modal" data-target="#exampleModal">
+    </button>
+    <button type="button" data-toggle="modal" data-target="#loginModal">
       <img class="myProjectsBtn" src="images/bluelogin.png">
     </button>
     <a href="/logout">
@@ -86,13 +86,68 @@
   </div>
 
 
-  <!-- LOGIN MODAL -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <!-- SIGN UP MODAL -->
+  <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Login Form</h5>
+          <h5 class="modal-title" id="signupModalLabel">Sign-up Form</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="create-user form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="username">Username:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="username" placeholder="Enter a Username" name="username">
+                <div id="username-validate"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="email">Email:</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="pwd">Password:</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+                <div id="password-validate"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="pw2">Re-Enter Password:</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="pwd2" placeholder="Enter password again" name="pwd2">
+                <div id="password2-validate"></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="create-user btn btn-info btn-default">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGIN MODAL -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Login Form</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -103,15 +158,15 @@
               <div class="form-group">
                 <label for="user_name-input">Username</label>
                 <input type="text" class="form-control" id="user_name-input" placeholder="Username" required>
+                <div id="username-login-validate"></div>
               </div>
               <div class="form-group">
                 <label for="password-input">Password</label>
                 <input type="password" class="form-control" id="password-input" placeholder="Password" required>
+                <div id="password-login-validate"></div>
               </div>
               <button type="submit" class="btn btn-secondary">Login</button>
             </form>
-            <br />
-            <p>Or sign up <a href="/signup"></a>here</a></p>
           </div>
         </div>
         <div class="modal-footer">
