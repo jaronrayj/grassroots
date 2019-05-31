@@ -5,10 +5,14 @@ body {
 
 /* BACKGROUND IMAGE */
 .background-image {
-    background-image: url("../images/homepageimage.png");
+    background-image: url("../images/homepagemiddle.png");
     height: 817px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
     width: 100%;
-    margin-left: 5%;
+    margin-left: 8%;
     background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
@@ -100,8 +104,28 @@ body {
     font-size: 40px;
 }
 
-.textDiv {
+.textSmall {
+    padding-top: 10px;
+    color: #3BA1C4;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+}
 
+.cardBody {
+    background-color: #9CE6E1;
+    color: #3BA1C4
+}
+
+.missionStment {
+    margin-top: 600px;
+    margin-right: auto;
+    padding-left: 60px !important;
+}
+
+.signUpLink {
+    color: white !important;
+    background-color: #3BA1C4 !important;
 }
 
 .bottomImage {
@@ -121,6 +145,7 @@ body {
     bottom: 0;
     height: 50px;
     width: 100%;
+    margin-top: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -151,6 +176,24 @@ body {
     top: 40%;
     left: 52%;
 }
+
+/* MODAL CSS */
+.modal-header,
+.modal-footer {
+  background-color: #9CE6E1 !important;
+}
+
+.btn.create-user,
+.login-user {
+  color: black !important;
+  background-color: #b3e85b !important;
+}
+
+.close-btn{
+  color: black !important;
+  background-color: #fec955 !important;
+}
+
 
 /* CODE FROM STICKY NAV? */
 @media screen and (max-height: 450px) {

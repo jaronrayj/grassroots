@@ -9,7 +9,7 @@ body {
     height: 817px;
     width: 100%;
     margin-left: 5%;
-    background-position: right;
+    background-position: right top;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -88,35 +88,13 @@ body {
     left: 65%;
 }
 
-/* CARDS */
-.viewBtn {
-    background-color: #5368B7;
-    outline-color: #324074;
-    color: white;
-}
-
-.cardBody {
-    background-color: #aec0ebd2;
-}
-
-.navBtn {
-    background-color: #5368B7;
-    color: white;
-}
-
-/* TOP PROJECTS TEXT */
+/* HEADER TEXT */
 .title {
     color: #5368B7;
     font-weight: bold;
     font-size: 60px;
 }
 
-/* TOP PROJECTS DROP DOWN */
-.dropDown {
-    background-color: #91AAE3;
-    color: aliceblue;
-}
-
 /* CARDS */
 .viewBtn {
     background-color: #5368B7;
@@ -129,8 +107,8 @@ body {
 }
 
 .navBtn {
-    background-color: #5368B7;
-    color: white;
+    background-color: #5368B7 !important;
+    color: white !important;
 }
 
 /* FOOTER/BUTTONS */
@@ -171,24 +149,6 @@ body {
     top: 40%;
     left: 52%;
 }
-
-/* MODALS */
-div#find-out-more-modal>div.modal-dialog {
-    max-width: 600px;
-}
-
-div.modal-header {
-    background-color: #91aae3;
-    color: #fff;
-}
-
-div#find-out-more-modal>.card-img-top {
-    margin: auto;
-}
-
-div.modal-footer {
-    background-color: #5368b7;
-} 
 
 /* CODE FROM STICKY NAV? */
 @media screen and (max-height: 450px) {
