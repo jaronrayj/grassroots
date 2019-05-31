@@ -1,17 +1,20 @@
 /* BODY */
 body {
     font-family: "Arial", sans-serif;
+    padding-left: 180px;
+}
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 /* BACKGROUND IMAGE */
 .background-image {
-    background-image: url("../images/myprojectimage.png");
-    height: 817px;
+    background-image: url("../images/purplebottom.png");
+    height: 381px;
     width: 100%;
-    margin-left: 5%;
-    background-position: right;
     background-repeat: no-repeat;
-    background-size: cover;
+    overflow: hidden;
 }
 
 /* NAV BAR */
@@ -141,7 +144,6 @@ body {
     height: 50px;
     width: 100%;
     padding-top: 5px;
-    margin-top: 10px;
     padding-bottom: 5px;
     text-align: center;
     background-color: #91AAE3;
