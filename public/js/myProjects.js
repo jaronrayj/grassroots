@@ -64,17 +64,21 @@ $(document).ready(function() {
     card(projectArray);
   });
 
-  //Project copy button
-  $(document).on("click", ".copy-project", function () {
+  //Project update button
+  $(document).on("click", ".update-project", function () {
     var projectId = $(this).attr("data-project");
-
+   
     $.get("/api/projects/" + projectId, function (data) {
+      var date = `${data.date}T${data.time}`
       $("#find-out-more-modal").modal("hide");
       $("#title").val(data.title);
       $("#description").val(data.description);
+      $("#location").val(data.location);
+      $("#date").val(date);
       $("#number-of-people").val(data.number_of_people);
       $(`select#category option:contains("${data.category_type}")`).prop("selected", true);
-      $("#copy-project-modal").modal();
+      $(".update-project-form").attr("data-project",projectId);
+      $("#update-project-modal").modal();
     });
   });
 
@@ -93,8 +97,8 @@ $(document).ready(function() {
       $(".date").text(date);
       $(".number-of-people").text(data.number_of_people)
       $(".category").text(data.category_type);
-      $(".copy-project").attr("data-project", projectId);
-      $(".join-project").attr("data-project", projectId);
+      $(".update-project").attr("data-project", projectId);
+      $(".delete-project").attr("data-project", projectId);
       $("#find-out-more-modal").modal();
     });
   });
@@ -132,10 +136,10 @@ $(document).ready(function() {
 
   }
 
-  //Project copy submit
-  $(document).on("submit", ".copy-project-form", function (e) {
+  //Project update submit
+  $(document).on("submit", ".update-project-form", function (e) {
     e.preventDefault();
-
+    var projectId = $(this).attr("data-project");
     var title = $("#title").val().trim();
     var description = $("#description").val().trim();
     var location = $("#location").val().trim();
@@ -145,7 +149,7 @@ $(document).ready(function() {
     var numberOfPeople = $("#number-of-people").val().trim();
     var category = $("#category").val();
 
-    var newProject = {
+    var updateProject = {
       title: title,
       description: description,
       location: location,
@@ -155,11 +159,30 @@ $(document).ready(function() {
       category_type: category
     };
 
-    $.post("/api/projects", newProject, function (data, status) {
-      if (status) {
-        alert(`Project ${title} is created!`);
-        window.location.replace("/projects/my");
-      };
+    let url = "/api/projects/" + projectId;
+
+    $.ajax({
+      type: "put",
+      data: updateProject,
+      url: url
+    }).then(function() {
+      alert("This project has been updated");
+      window.location.reload();
     });
+  });
+  
+  //Project delete
+  $(document).on("click", ".delete-project", function () {
+    let projectId = $(this).attr("data-project");
+    var url = "/api/projects/" + projectId;
+    if (confirm("Are you sure you want to delete this project?")) {
+
+      $.ajax({
+        type: "delete",
+        url: url
+      }).then(function () {
+        window.location.reload();
+      });
+    };
   });
 });

@@ -3,10 +3,11 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="styles/myProjects.css">
+  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/myProjects.css">
   <title>My Projects</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -14,24 +15,24 @@
 <body>
   <!-- SIDE NAV BAR -->
   <div class="sidenav">
-    <img class="logo" src="images/Screen Shot 2019-05-22 at 10.06.54 AM.png">
+    <img class="logo" src="/images/Screen Shot 2019-05-22 at 10.06.54 AM.png">
     <a href="/projects/new">
-      <img class="newProjectBtn" src="images/Screen Shot 2019-05-22 at 10.11.19 AM.png">
+      <img class="newProjectBtn" src="/images/Screen Shot 2019-05-22 at 10.11.19 AM.png">
     </a>
     <a href="/projects/my">
-      <img class="myProjectsBtn" src="images/Screen Shot 2019-05-22 at 10.11.26 AM.png">
+      <img class="myProjectsBtn" src="/images/projectHomeButton.png">
     </a>
     <a href="/logout">
-      <img class="logoutBtn" src="images/purplelogout.png">
+      <img class="logoutBtn" src="/images/purplelogout.png">
     </a>
     <a href="https://www.instagram.com">
-      <img class="instagramNav" src="images/Instagram.png">
+      <img class="instagramNav" src="/images/Instagram.png">
     </a>
     <a href="https://www.twitter.com">
-      <img class="twitterNav" src="images/Twitter.png">
+      <img class="twitterNav" src="/images/Twitter.png">
     </a>
     <a href="https://www.facebook.com">
-      <img class="facebookNav" src="images/Facebook.png">
+      <img class="facebookNav" src="/images/Facebook.png">
     </a>
   </div>
 
@@ -99,25 +100,26 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn navBtn btn-primary copy-project">Copy</button>
+            <button type="submit" class="btn btn-primary update-project">Update Project</button>
+            <button type="submit" class="btn btn-danger delete-project">Delete Project</button>
             <button type="button" class="btn navBtn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- COPY PROJECT MODAL -->
-    <div class="modal" tabindex="-1" role="dialog" id="copy-project-modal">
+    <!-- UPDATE PROJECT MODAL -->
+    <div class="modal" tabindex="-1" role="dialog" id="update-project-modal">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Create Project</h5>
+            <h5 class="modal-title">Update Project</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <form class="copy-project-form form-horizontal">
+            <form class="update-project-form form-horizontal">
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-12">
@@ -180,7 +182,7 @@
           </div>
 
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary copy-project-submit">Submit</button>
+            <button type="submit" class="btn btn-primary update-project-submit">Submit</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
           </form>
@@ -203,13 +205,13 @@
     <div class="container">
       <span class="text-light">
         <a href="https://www.instagram.com">
-          <img class="instagramFoot" src="images/Instagram.png">
+          <img class="instagramFoot" src="/images/Instagram.png">
         </a>
         <a href="https://www.twitter.com">
-          <img class="twitterFoot" src="images/Twitter.png">
+          <img class="twitterFoot" src="/images/Twitter.png">
         </a>
         <a href="https://www.facebook.com">
-          <img class="facebookFoot" src="images/Facebook.png">
+          <img class="facebookFoot" src="/images/Facebook.png">
         </a>
       </span>
     </div>
