@@ -28,9 +28,10 @@ module.exports = function (app) {
   //   res.sendFile(path.join(__dirname, "../public/home.html"));
   // });
 
-  app.get("/projects/new", isAuthenticated, function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/new_project.html"));
-  });
+  // OBSOLETE
+  // app.get("/projects/new", isAuthenticated, function (req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/new_project.html"));
+  // });
 
   app.get("/projects/my", isAuthenticated, function (req, res) {
     res.sendFile(path.join(__dirname, "../public/my_projects.html"));

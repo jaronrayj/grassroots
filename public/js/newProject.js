@@ -2,20 +2,20 @@ $(document).ready(function () {
   $(document).on("submit", ".create-project", function (e) {
     e.preventDefault();
 
-    var title = $("#title")
+    var title = $("#create-title")
       .val()
       .trim();
-    var description = $("#description")
+    var description = $("#create-description")
       .val()
       .trim();
-    var place = $("#location")
+    var place = $("#create-location")
       .val()
       .trim();
-    var rawDateTime = $("#date").val();
-    var numberOfPeople = $("#number-of-people")
+    var rawDateTime = $("#create-date").val();
+    var numberOfPeople = $("#create-number-of-people")
       .val()
       .trim();
-    var category = $("#category").val();
+    var category = $("#create-category").val();
 
     var splitRawDateTime = rawDateTime.split("T");
 
@@ -43,19 +43,19 @@ $(document).ready(function () {
   });
 });
 
-$(document).on("click", ".delete-project", function () {
-  var id = $(this).data("id");
+// $(document).on("click", ".delete-project", function () {
+//   var id = $(this).data("id");
 
-  var url = "/api/projects/" + id;
+//   var url = "/api/projects/" + id;
 
-  $.ajax({
-    type: "delete",
-    url: url
-  }).then(function (data) {
-    alert("Project  " + data.name + " deleted");
-    location.reload();
-  });
-});
+//   $.ajax({
+//     type: "delete",
+//     url: url
+//   }).then(function (data) {
+//     alert("Project  " + data.name + " deleted");
+//     location.reload();
+//   });
+// });
 
 // AUTHENTICATION STATE OBSERVER
 // firebase.auth().onAuthStateChanged(function (user) {
