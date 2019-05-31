@@ -69,14 +69,14 @@ $(document).ready(function() {
     var projectId = $(this).attr("data-project");
    
     $.get("/api/projects/" + projectId, function (data) {
-      var date = `${data.date}T${data.time}`
+      var date = `${data.date}T${data.time}`;
       $("#find-out-more-modal").modal("hide");
-      $("#title").val(data.title);
-      $("#description").val(data.description);
-      $("#location").val(data.location);
-      $("#date").val(date);
-      $("#number-of-people").val(data.number_of_people);
-      $(`select#category option:contains("${data.category_type}")`).prop("selected", true);
+      $("#update-title").val(data.title);
+      $("#update-description").val(data.description);
+      $("#update-location").val(data.location);
+      $("#update-date").val(date);
+      $("#update-number-of-people").val(data.number_of_people);
+      $(`select#update-category option:contains("${data.category_type}")`).prop("selected", true);
       $(".update-project-form").attr("data-project",projectId);
       $("#update-project-modal").modal();
     });
@@ -98,6 +98,7 @@ $(document).ready(function() {
       $(".number-of-people").text(data.number_of_people)
       $(".category").text(data.category_type);
       $(".update-project").attr("data-project", projectId);
+      $(".copy-project").attr("data-project",projectId);
       $(".delete-project").attr("data-project", projectId);
       $("#find-out-more-modal").modal();
     });
@@ -140,14 +141,14 @@ $(document).ready(function() {
   $(document).on("submit", ".update-project-form", function (e) {
     e.preventDefault();
     var projectId = $(this).attr("data-project");
-    var title = $("#title").val().trim();
-    var description = $("#description").val().trim();
-    var location = $("#location").val().trim();
-    var datetime = $("#date").val().split("T");
+    var title = $("#update-title").val().trim();
+    var description = $("#update-description").val().trim();
+    var location = $("#update-location").val().trim();
+    var datetime = $("#update-date").val().split("T");
     var date = datetime[0];
     var time = datetime[1];
-    var numberOfPeople = $("#number-of-people").val().trim();
-    var category = $("#category").val();
+    var numberOfPeople = $("#update-number-of-people").val().trim();
+    var category = $("#update-category").val();
 
     var updateProject = {
       title: title,
@@ -184,5 +185,50 @@ $(document).ready(function() {
         window.location.reload();
       });
     };
+  });
+  
+  //Project copy button
+  $(document).on("click", ".copy-project", function () {
+    var projectId = $(this).attr("data-project");
+
+    $.get("/api/projects/" + projectId, function (data) {
+      $("#find-out-more-modal").modal("hide");
+      $("#copy-title").val(data.title);
+      $("#copy-description").val(data.description);
+      $("#copy-number-of-people").val(data.number_of_people);
+      $(`select#copy-category option:contains("${data.category_type}")`).prop("selected", true);
+      $("#copy-project-modal").modal();
+    });
+  });
+
+  //Project copy submit
+  $(document).on("submit", ".copy-project-form", function (e) {
+    e.preventDefault();
+
+    var title = $("#copy-title").val().trim();
+    var description = $("#copy-description").val().trim();
+    var location = $("#copy-location").val().trim();
+    var datetime = $("#copy-date").val().split("T");
+    var date = datetime[0];
+    var time = datetime[1];
+    var numberOfPeople = $("#copy-number-of-people").val().trim();
+    var category = $("#copy-category").val();
+
+    var newProject = {
+      title: title,
+      description: description,
+      location: location,
+      time: time,
+      date: date,
+      number_of_people: numberOfPeople,
+      category_type: category
+    };
+
+    $.post("/api/projects", newProject, function (data, status) {
+      if (status) {
+        alert(`Project ${title} is created!`);
+        window.location.replace("/projects/my");
+      };
+    });
   });
 });
