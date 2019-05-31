@@ -18,7 +18,8 @@ $(document).ready(function() {
       var newDiv = $("<div>")
         .addClass("card projectCard")
         .attr("style", "width: 18rem;");
-      var img = $("<img>").addClass("card-img-top").attr("src", "https://via.placeholder.com/100x50");
+      var pic = stockPhoto(project[i].category_type)
+      var img = $("<img>").addClass("card-img-top").attr("src", pic);
       var cardBody = $("<div>").addClass("card-body cardBody");
       var cardTitle = $("<h5>").addClass("card-title").text(project[i].title);
       var cardText = $("<p>").addClass("card-text").text(project[i].location);
@@ -77,12 +78,14 @@ $(document).ready(function() {
     });
   });
 
-  //Pull up modal with all project info, join, and copy buttons
+  //Pull up modal with all project info, and copy buttons
   $(document).on("click", ".viewBtn", function () {
     var projectId = $(this).attr("data-project");
 
     $.get("/api/projects/" + projectId, function (data) {
       var date = data.date.substring(5, 8) + data.date.substring(8, 10) + "-" + data.date.substring(0, 4);
+      var pic = stockPhoto(data.category_type);
+      $(".moreImg").attr("src", pic);
       $(".modal-title-more").text(data.title);
       $(".description").text(data.description);
       $(".location").text(data.location);
@@ -95,6 +98,30 @@ $(document).ready(function() {
       $("#find-out-more-modal").modal();
     });
   });
+
+  function stockPhoto(category){
+    switch (category) {
+      case "Cleanup":
+        var pic = "../images/cleaning.jpg"
+        break;
+      case "Community Service":
+        var pic = "../images/service.jpg"
+        break;
+      case "Volunteering":
+        var pic = "../images/volunteer.jpg"
+        break;
+      case "Food Bank":
+        var pic = "../images/food.jpg"
+        break;
+      case "Trashtag":
+        var pic = "../images/trashtag.jpg"
+        break;
+
+      default:
+        break;
+    }
+    return pic;
+  }
 
   if(projectArray > 6){
     $("#more").show();
