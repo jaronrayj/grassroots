@@ -36,22 +36,27 @@
     </a>
   </div>
 
-  <!-- DIV FOR BACKGROUND PHOTO (IN CSS) -->
-  <div class="background-image"></div>
+
 
   <div class="container h-100">
-    <div class="row h-100 justify-content-center align-items-center">
+    <div class="text-right">
       <h1 class="title">Grassroots</h1>
       <!-- <h3 class="text">"Accelerating the way communities thrive."</h3> -->
     </div>
 
-    <div class="row h-100 justify-content-center align-items-center">
-      <h3 class="text">"Accelerating the way communities thrive."</h3>
+    <div class=" text-right">
+      <h3 class="text">Accelerating the way communities thrive</h3>
     </div>
+  </div>
+</div>
+  <!-- DIV FOR BACKGROUND PHOTO (IN CSS) -->
+  <div class="background-image"></div>
 
+  <div class="missionStment container h-100">
     <div class="row h-100 justify-content-center align-items-center">
-      <h1>Our Mission</h1>
-      <h3>Here at Grassroots, it is our mission to bring out the best of your communities. By signing up, you'll have
+      <h1 class="title">Our Mission</h1>
+      <h3 class="textSmall">Here at Grassroots, it is our mission to bring out the best of your communities. By signing up,
+        you'll have
         access to a range of working community projects accross the world! From community engagement, environmental
         awareness, activism, and many more categories, Grassroots is your go-to app for organizing your community
         projects. Simply search for an existing project, join a project, copy a project's framework to implement it into
@@ -59,13 +64,13 @@
       </h3>
     </div>
     <div class="row h-100 justify-content-center align-items-center">
-      <h3>Check out this featured Community Project:</h3>
+      <h3 class="text">Check out this featured Community Project:</h3>
     </div>
     <div class="row h-100 justify-content-center align-items-center">
 
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="./images/AdobeStock_176681813.jpeg" alt="Card image cap">
-        <div class="card-body">
+        <div class="card-body cardBody">
           <h5 class="card-title">Liberty Park Cleanup</h5>
           <p class="card-text"><small class="text-muted">June 8th, 2019 @ 8:00 AM</small></p>
           <!-- <p class="card-text"><small class="text-muted">8:00 AM - 12:00 PM</small></p> -->
@@ -75,17 +80,11 @@
         </div>
       </div>
     </div>
-    <!-- Commented out for now -->
-    <!-- <div class="row h-100 justify-content-center align-items-center">
-      <h1>THIS IS THE CONTACT US</h1>
-    </div>
     <div class="row h-100 justify-content-center align-items-center">
-
-      <h3>Don't call me.</h3>
-    </div> -->
+    <h3 class="textSmall">Not a member? <button data-toggle="modal" data-target="#exampleModal" class="signUpLink">Sign Up Here! </button></h3>
+    </div>
   </div>
 
-  <div class="bottomImage"></div>
 
   <!-- LOGIN MODAL -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -112,7 +111,7 @@
               <button type="submit" class="btn btn-secondary">Login</button>
             </form>
             <br />
-            <p>Or sign up <a href="/signup">here</a></p>
+            <p>Or sign up <a href="/signup"></a>here</a></p>
           </div>
         </div>
         <div class="modal-footer">
@@ -145,9 +144,9 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
   integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-  </script>
+</script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
   integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>
+</script>
 
 </html>

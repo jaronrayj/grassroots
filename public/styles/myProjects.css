@@ -5,15 +5,11 @@ body {
 
 /* BACKGROUND IMAGE */
 .background-image {
-    background-image: url("../images/homepagemiddle.png");
+    background-image: url("../images/myprojectimage.png");
     height: 817px;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: -1;
     width: 100%;
-    margin-left: 8%;
-    background-position: right;
+    margin-left: 5%;
+    background-position: right top;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -26,7 +22,7 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #9CE6E1;
+    background-color: #91AAE3;
     overflow-x: hidden;
     padding-top: 20px;
 }
@@ -91,51 +87,28 @@ body {
     top: 97%;
     left: 65%;
 }
-/* GRASSROOTS TEXT */ 
+
+/* HEADER TEXT */
 .title {
-    color: #3BA1C4;
+    color: #5368B7;
     font-weight: bold;
     font-size: 60px;
 }
 
-.text {
-    color: #3BA1C4;
-    font-weight: bold;
-    font-size: 40px;
-}
-
-.textSmall {
-    padding-top: 10px;
-    color: #3BA1C4;
-    font-weight: bold;
-    font-size: 30px;
-    text-align: center;
+/* CARDS */
+.viewBtn {
+    background-color: #5368B7;
+    outline-color: #324074;
+    color: white;
 }
 
 .cardBody {
-    background-color: #9CE6E1;
-    color: #3BA1C4
+    background-color: #aec0ebd2;
 }
 
-.missionStment {
-    margin-top: 600px;
-    margin-right: auto;
-    padding-left: 60px !important;
-}
-
-.signUpLink {
+.navBtn {
+    background-color: #5368B7 !important;
     color: white !important;
-    background-color: #3BA1C4 !important;
-}
-
-.bottomImage {
-    background-image: url("../images/bottomhomepage.png");
-    height: 817px;
-    width: 100%;
-    margin-left: 10%;
-    background-position: bottom;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 /* FOOTER/BUTTONS */
@@ -145,11 +118,11 @@ body {
     bottom: 0;
     height: 50px;
     width: 100%;
-    margin-top: 10px;
     padding-top: 5px;
+    margin-top: 10px;
     padding-bottom: 5px;
     text-align: center;
-    background-color: #9CE6E1;
+    background-color: #91AAE3;
 }
 
 /* FOOTER SOCIAL MEDIA BUTTONS */
