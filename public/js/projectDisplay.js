@@ -4,7 +4,6 @@ $(document).ready(function () {
 
   $.get("/api/projects",
     function (data) {
-      console.log("TCL: data", data);
       projectArray = data;
       card(data);
     }
@@ -17,27 +16,27 @@ $(document).ready(function () {
     if (category === "All") {
       $.ajax({
         type: "GET",
-        url: "/api/projects",
-        success: function (data) {
-          projectArray = [];
-          console.log("TCL: projectArray", projectArray);
-          console.log("TCL: data", data);
-          projectArray = data;
-          console.log("TCL: projectArray", projectArray);
-          card(data);
-        }
+        url: "/api/projects"
+      }).then(function (data) {
+        console.log("TCL: data", data);
+        offset = 0;
+        projectArray = data;
+        card(data);
       });
     } else {
       var url = "/api/projects/category/" + category;
       $.ajax({
         type: "GET",
-        url: url,
-        success: function (data) {
-          projectArray = [];
-          console.log("TCL: projectArray", projectArray);
-          console.log("TCL: data", data);
+        url: url
+      }).then(function (data) {
+        console.log("TCL: data", data);
+        if (data[0] === undefined) {
+          $(".firstRow").empty();
+          $(".secondRow").empty();
+          $(".firstRow").text("No current results, please choose a different category.");
+        } else {
+          offset = 0;
           projectArray = data;
-          console.log("TCL: projectArray", projectArray);
           card(data);
         }
       });
