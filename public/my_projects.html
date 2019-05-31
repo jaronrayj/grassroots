@@ -103,13 +103,15 @@
           </div>
         </div>
         <div class="modal-footer">
+          <button type="submit" class="btn btn-primary update-project">Update Project</button>
+          <button type="submit" class="btn btn-danger delete-project">Delete Project</button>
           <button type="submit" class="btn navBtn btn-primary copy-project">Copy</button>
           <button type="button" class="btn navBtn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
   </div>
-
+  
   <!-- COPY PROJECT MODAL -->
   <div class="modal" tabindex="-1" role="dialog" id="copy-project-modal">
     <div class="modal-dialog" role="document">
@@ -185,6 +187,76 @@
               </div>
             </div>
 
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary copy-project-submit">Submit</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPDATE PROJECT MODAL -->
+  <div class="modal" tabindex="-1" role="dialog" id="update-project-modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Update Project</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="update-project-form form-horizontal">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-12">
+                  <label class="control-label" for="title">Title:</label>
+                  <input type="text" class="form-control" id="title" placeholder="" name="title" autofocus required>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-12">
+                  <label class="control-label col-sm-2" for="description">Description:</label>
+                  <textarea class="form-control" id="description" placeholder="" name="description" rows="7"
+                    required></textarea>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-12">
+                  <label class="control-label" for="location">Location:</label>
+                  <input type="text" class="form-control" id="location" placeholder="Enter a location" name="location"
+                    required>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-12">
+                  <label class="control-label col-sm-2" for="date">Date:</label>
+                  <input type="datetime-local" class="form-control" id="date" placeholder="Enter a date" name="date"
+                    required>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-12">
+                  <label class="control-label col-sm-6" for="number-of-people">Number of People:</label>
+                  <input type="number" class="form-control" id="number-of-people" placeholder="" name="number-of-people"
+                    min="1" required>
+                </div>
+              </div>
+            </div>
+            
             <div class="modal-footer">
               <button type="submit" class="btn btn-primary copy-project-submit">Submit</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
