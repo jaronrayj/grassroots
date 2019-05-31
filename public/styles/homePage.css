@@ -152,6 +152,24 @@ body {
     left: 52%;
 }
 
+/* MODAL CSS */
+.modal-header,
+.modal-footer {
+  background-color: #9CE6E1 !important;
+}
+
+.btn.create-user,
+.login-user {
+  color: black !important;
+  background-color: #b3e85b !important;
+}
+
+.close-btn{
+  color: black !important;
+  background-color: #fec955 !important;
+}
+
+
 /* CODE FROM STICKY NAV? */
 @media screen and (max-height: 450px) {
     .sidenav {
