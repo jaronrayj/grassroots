@@ -14,6 +14,8 @@ $(document).ready(function () {
     };
 
     if (!userData.user_name || !userData.password) {
+      $("#password-validate").text("Please enter your password...");
+      $("#username-validate").text("Please enter your username...");
       return;
     }
 
@@ -34,7 +36,14 @@ $(document).ready(function () {
         // If there's an error, log the error
       })
       .catch(function (err) {
-        console.log(err);
+        if (err) {
+          $("#password-validate").text(
+            "Please make sure your password is correct..."
+          );
+          $("#username-validate").text(
+            "Please make sure your username is correct..."
+          );
+        }
       });
   }
 });

@@ -103,8 +103,10 @@ $(document).ready(function () {
   //Pull up modal with all project info, join, and copy buttons
   $(document).on("click", ".viewBtn", function () {
     var projectId = $(this).attr("data-project");
+    console.log(projectId);
 
     $.get("/api/projects/" + projectId, function (data) {
+      console.log(data);
       var date = data.date.substring(5, 8) + data.date.substring(8, 10) + "-" + data.date.substring(0, 4);
       $(".modal-title-more").text(data.title);
       $(".description").text(data.description);
