@@ -15,9 +15,8 @@
   <!-- SIDE NAV BAR -->
   <div class="sidenav">
     <img class="logo" src="/images/Screen Shot 2019-05-22 at 10.06.54 AM.png">
-    <a href="/projects/new">
-      <img class="newProjectBtn" src="/images/Screen Shot 2019-05-22 at 10.11.19 AM.png">
-    </a>
+    <img class="newProjectBtn" src="/images/Screen Shot 2019-05-22 at 10.11.19 AM.png" data-toggle="modal"
+      data-target=".bd-example-modal-lg">
     <a href="/projects/my">
       <img class="myProjectsBtn" src="/images/Screen Shot 2019-05-22 at 10.11.26 AM.png">
     </a>
@@ -117,7 +116,7 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
   <!-- COPY PROJECT MODAL -->
   <div class="modal" tabindex="-1" role="dialog" id="copy-project-modal">
     <div class="modal-dialog" role="document">
@@ -214,6 +213,87 @@
   <!-- DIV FOR BACKGROUND PHOTO (IN CSS) -->
   <div class="background-image"></div>
 
+  <!-- CREATE PROJECT MODAL -->
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create A Project</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="create-project form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="create-title">Title:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="create-title" placeholder="Enter a title" name="title"
+                  required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="create-description">Description:</label>
+              <div class="col-sm-10">
+                <textarea class="form-control" id="create-description" placeholder="Enter a description"
+                  name="description" required></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="create-location">Location:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="create-location" placeholder="Enter a location"
+                  name="location" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="create-date">Date:</label>
+              <div class="col-sm-10">
+                <input type="datetime-local" class="form-control" id="create-date" placeholder="Enter a date"
+                  name="date" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-sm-5" for="create-number-of-people">Number of People:</label>
+              <div class="col-sm-10">
+                <input min="0" type="number" class="form-control" id="create-number-of-people"
+                  placeholder="Enter the number of people required to be successful" name="number-of-people" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-sm-5" for="create-category">Choose A Category:</label>
+              <div class="col-sm-10">
+                <select class="custom-select" id="create-category" name="create-category">
+                  <option value="Cleanup">Cleanup</option>
+                  <option value="Community Service">Community Service</option>
+                  <option value="Trashtag">Trashtag</option>
+                  <option value="Food Bank">Food Bank</option>
+                  <option value="Volunteering">Volunteering</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="create-project btn btn-info btn-default">Submit</button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer class="footer1">
     <div class="container">
@@ -232,13 +312,14 @@
   </footer>
 
   <script src="/js/projectDisplay.js"></script>
+  <script src="/js/newProject.js"></script>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
   integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-</script>
+  </script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
   integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-</script>
+  </script>
 
 </html>
